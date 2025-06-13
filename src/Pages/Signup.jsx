@@ -36,21 +36,15 @@ const Signup = () => {
         createUser(email, password)
             .then((result) => {
                 const usser = result.user
-                console.log(usser);
-        //  navigate('/')
-        // Swal.fire({
-        //     title: 'logged in successfully',
-        //     icon: 'success'
-        // })
         // console.log(usser);
         updateUser({ displayName: name, photoURL: photo })
             .then(() => {
                 setUser({ ...usser, displayName: name, photoURL: photo });
-                navigate('/')
                 Swal.fire({
                     title: 'logged in successfully',
                     icon: 'success'
                 })
+                navigate('/')
             })
             .catch((error) => {
                 toast.error(error.message)
