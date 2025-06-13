@@ -1,0 +1,10 @@
+a{
+    margin-right: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+a.active{
+    color: fuchsia;
+    text-decoration: underline;
+}
