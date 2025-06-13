@@ -1,0 +1,108 @@
+import React, { forwardRef, use, useState } from 'react';
+import { AuthContext } from '../Context/AuthContext';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
+const AddItem = () => {
+
+    const { user, isLoading } = use(AuthContext)
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const formated = selectedDate.toLocaleDateString('en-GB')
+    const ExampleCustomInput = forwardRef(
+        ({ value, onClick, className }, ref) => (
+            <button className={className} onClick={onClick} ref={ref}>
+                {value}
+            </button>
+        ),
+    );
+
+    const handleAdd =(e)=>{
+        e.preventDefault()
+        const form = e.target
+        const formData = new FormData(form)
+        const newItem = Object.fromEntries(formData.entries())
+        const data = {...newItem, date:formated}
+        console.log(data);
+    }
+
+
+    return (
+        <div className='mb-10'>
+            <div className='p-12 text-center space-y-4'>
+                <h1 className="text-6xl text-[#F4B400]">Add Item</h1>
+            </div>
+            <form onSubmit={handleAdd}>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                    {/* Post type */}
+                    <fieldset className="fieldset  border-2 border-[#2C7BE5] bg-gradient-to-r from-[#F4B400] to-gray-50 rounded-box p-4">
+                        <label className="label font-bold text-black text-[18px]">Post Type</label>
+                        <select className="input w-full " name="type" id="day" required>
+                            <option disabled={true}>Select A Type</option>
+                            <option value="Lost">Lost</option>
+                            <option value="Found">Found</option>
+                        </select>
+                    </fieldset>
+                    {/* Thumbnail*/}
+                    <fieldset className="fieldset border-2 border-[#2C7BE5] bg-gradient-to-r from-[#F4B400] to-gray-50 rounded-box p-4">
+                        <label className="label font-bold text-black text-[18px]">Thumbnail (Image URL)</label>
+                        <input type="text" name='thumbnail' className="input w-full " placeholder="Thumbnail (Image URL)" required />
+                    </fieldset>
+
+                    {/* title*/}
+                    <fieldset className="fieldset  border-2 border-[#2C7BE5] bg-gradient-to-r from-[#F4B400] to-gray-50 rounded-box p-4">
+                        <label className="label font-bold text-black text-[18px]">Title</label>
+                        <input type="text" name='title' className="input w-full " required placeholder="Title" />
+                    </fieldset>
+
+                    {/*  Description*/}
+                    <fieldset className="fieldset  border-2 border-[#2C7BE5] bg-gradient-to-r from-[#F4B400] to-gray-50 rounded-box p-4">
+                        <label className="label font-bold text-black text-[18px]">Description</label>
+                        <input type="text" name='description' className="input w-full " required placeholder="Description" />
+                    </fieldset>
+
+                    {/* Category */}
+                    <fieldset className="fieldset border-2 border-[#2C7BE5] bg-gradient-to-r from-[#F4B400] to-gray-50 rounded-box p-4">
+                        <label className="label font-bold text-black text-[18px]">Category</label>
+                        <select className="input w-full " name="category" id="day" required>
+                            <option disabled={true}>Select A Category</option>
+                            <option value="Lost">Human</option>
+                            <option value="Found">Gadgets</option>
+                            <option value="Found">Pets</option>
+                            <option value="Found">Documants</option>
+                        </select>
+                    </fieldset>
+                    {/* location */}
+                    <fieldset className="fieldset   border-2 border-[#2C7BE5] bg-gradient-to-r from-[#F4B400] to-gray-50 rounded-box p-4">
+                        <label className="label font-bold text-black text-[18px]">Location</label>
+                        <input type="text" name='location' className="input w-full " required placeholder="Location" />
+                    </fieldset>
+                    {/*  Date */}
+                    <fieldset className="fieldset  border-2 border-[#2C7BE5] bg-gradient-to-r from-[#F4B400] to-gray-50 rounded-box p-4">
+                        <label className="label font-bold text-black text-[18px]">Date</label>
+                        <DatePicker
+                            name='date'
+                            selected={selectedDate}
+                            onChange={(date) => setSelectedDate(date)}
+                            customInput={<ExampleCustomInput className="input w-full" />}
+                        />
+                    </fieldset>
+
+                    {/* Contact Information   */}
+                    <fieldset className="fieldset  border-2 border-[#2C7BE5] bg-gradient-to-r from-[#F4B400] to-gray-50 rounded-box p-4">
+                        <label className="label font-bold text-black text-[18px]">Contact Information</label>
+                        {
+                            isLoading ?
+                                (<span className="loading loading-bars loading-lg"></span>)
+                                :
+                                (<input type="email" name='email' value={user?.email || ''} className="input w-full " placeholder="User Email" readOnly />)
+                        }
+                    </fieldset>
+                </div>
+
+                <input type="submit" className='btn w-full mt-5 text-black text-[18px] bg-[#F4B400]' value="Add Item" />
+            </form>
+        </div>
+    );
+};
+
+export default AddItem;

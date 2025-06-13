@@ -3,6 +3,7 @@ import Root from "../Layout/Root";
 import Home from "../Pages/Home";
 import Signin from "../Pages/Signin";
 import Signup from "../Pages/Signup";
+import AddItem from "../Pages/AddItem";
 
 export const routes = createBrowserRouter([
     {
@@ -12,6 +13,10 @@ export const routes = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: 'additem',
+                Component: AddItem
             },
             {
                 path: 'signin',

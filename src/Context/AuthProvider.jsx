@@ -7,19 +7,23 @@ import { auth } from '../Componants/firebase/credential';
 const AuthProvider = ({children}) => {
     
     const [user, setUser] = useState()
+    const [isLoading, setIsLoading] = useState(true)
     console.log(user);
 
     const provider = new GoogleAuthProvider
 
     const createUser = (email, password) =>{
+        setIsLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const login = (email, password) =>{
+         setIsLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const googleSign = () =>{
+         setIsLoading(true)
         return signInWithPopup(auth, provider)
     }
 
@@ -34,6 +38,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth, (currentUser)=>{
             setUser(currentUser)
+             setIsLoading(false)
         })
         return ()=> unSubscribe()
     },[])
@@ -46,7 +51,8 @@ const AuthProvider = ({children}) => {
       user,
       logOut,
       login,
-      googleSign
+      googleSign,
+      isLoading
     }
 
     return (

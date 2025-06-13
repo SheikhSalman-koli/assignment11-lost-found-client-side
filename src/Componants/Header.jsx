@@ -34,19 +34,19 @@ const Header = () => {
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li><NavLink to='/'>Home</NavLink></li>
                             <li>
-                                <NavLink to='/allgroup'>All Groups</NavLink>
+                                <NavLink to='/additem'>Add Item</NavLink>
                             </li>
                             <li> <NavLink to='/create'>Create Group</NavLink></li>
                         </ul>
                     </div>
-                    <img className='w-10 h-10 rounded-full' src={logo} alt="empty for now" />
+                    <img className='w-10 h-10 rounded-full border-2 border-[#2C7BE5]' src={logo} alt="empty for now" />
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><NavLink to='/'>Home</NavLink></li>
                         <li>
-                            <NavLink to='/allgroup'>All Groups</NavLink>
+                            <NavLink to='/additem'>Add Item</NavLink>
                         </li>
                         <li> <NavLink to='/create'>Create Group</NavLink></li>
                     </ul>
