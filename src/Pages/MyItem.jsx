@@ -6,6 +6,7 @@ import { HiH1 } from 'react-icons/hi2';
 const MyItem = () => {
 
     const myitems = useLoaderData()
+    
     const [items, setItems] = useState(myitems.data)
 
     // console.log(items);

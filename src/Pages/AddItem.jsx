@@ -108,7 +108,10 @@ const AddItem = () => {
                             isLoading ?
                                 (<span className="loading loading-bars loading-lg"></span>)
                                 :
-                                (<input type="email" name='email' value={user?.email || ''} className="input w-full " placeholder="User Email" readOnly />)
+                                <>
+                                <input type="email" name='email' value={`Email: ${user?.email || ''}`} className="input w-full " placeholder="User Email" readOnly />
+                                <input type="text" name='name' value={`Name: ${user?.displayName || ''}`} className="input w-full " placeholder="User Email" readOnly />
+                                </>
                         }
                     </fieldset>
                 </div>

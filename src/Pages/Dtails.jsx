@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { forwardRef, use, useState } from 'react';
 import { RiCloseLargeFill } from 'react-icons/ri';
 import { useLoaderData } from 'react-router';
+import { AuthContext } from '../Context/AuthContext';
+import DatePicker from 'react-datepicker';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const Dtails = () => {
 
     const { data } = useLoaderData()
     // console.log(data);
+
+    const { user } = use(AuthContext)
+    // modal
     const [openmodal, setOpenmodal] = useState(false)
     const handleModal = () => {
         document.getElementById('my_modal_5')
@@ -14,10 +22,47 @@ const Dtails = () => {
     const closeModal = () => {
         setOpenmodal(false)
     }
-
-    const handleSubmit =(e)=>{
+    // date picker
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const formated = selectedDate.toLocaleDateString('en-GB')
+    const ExampleCustomInput = forwardRef(
+        ({ value, onClick, className }, ref) => (
+            <button type='button' className={className} onClick={onClick} ref={ref}>
+                {value}
+            </button>
+        ),
+    );
+    // handle recovered
+    const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('okokoko');
+        const form = e.target
+        const formData = new FormData(form)
+        const recoverdData = Object.fromEntries(formData.entries())
+        const allData = { ...recoverdData, recoverdDate: formated }
+
+        Swal.fire({
+            title: "Are you sure?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, post it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.post(`http://localhost:3000/recovered`, allData)
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.insertedId)
+                            Swal.fire({
+                                title: "recovered",
+                                text: "Your item has been Recovered successfully",
+                                icon: "success"
+                            });
+                    }).catch(error => {
+                         toast.error(error.message)
+                    })
+            }
+        });
     }
 
     return (
@@ -70,37 +115,90 @@ const Dtails = () => {
                         (<div id="my_modal_5" className="fixed w-auto lg:w-full h-full grid place-items-center z-50 bg-[#0006] top-0 bottom-0 left-0 right-0 overflow-scroll">
                             <div className={`p-5 bg-white rounded-lg min-w-[400px]  bg-[url(../assets/hero_img.jpg)] space-y-4`}>
 
-                                <h2 className="text-xl font-bold mb-2">{data.title}</h2>
-
-                                <img
-                                    src={data.thumbnail}
-                                    alt={data.title}
-                                    className="w-full h-40 object-cover rounded mb-3"
-                                />
-
-                                <div className="flex gap-2 mb-3">
-                                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
-                                        {data.type}
-                                    </span>
-                                    <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">
-                                        {data.category}
-                                    </span>
-                                </div>
-                                <p className="text-sm mb-1"><strong>Location:</strong> {data.location}</p>
-                                <p className="text-sm mb-1">
-                                    <strong>Date:</strong> {(data.date)}
-                                </p>
-                                <p className="text-sm mb-3">{data.description.slice(0, 80)}...</p>
-                                <div className="text-sm text-gray-600">
-                                    <p><strong>Contact:</strong> {data.email}</p>
-                                </div>
                                 <div className='flex justify-between'>
-                                    <button onClick={handleSubmit} type='submit' className='btn btn-primary'>Submit</button>
-                                <label className='z-[999]'>
-                                    <button className='btn btn-warning' onClick={closeModal}><RiCloseLargeFill size={30} /></button>
-                                </label>
+                                    <h3 className="text-2xl"></h3>
+                                    <label className='z-[999]'>
+                                        <button className='btn btn-warning' onClick={closeModal}><RiCloseLargeFill size={20} /></button>
+                                    </label>
                                 </div>
 
+                                <form onSubmit={handleSubmit}>
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">Post Type</legend>
+                                        <select className="input w-full" defaultValue={data.type} name="type" id="day" required>
+                                            <option disabled={true}>Select A Type</option>
+                                            <option value="Lost">Lost</option>
+                                            <option value="Found">Found</option>
+                                        </select>
+                                    </fieldset>
+
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">Thumbnail (Image URL)</legend>
+                                        <input type="text" name='thumbnail' defaultValue={data.thumbnail} className="input w-full " placeholder="Thumbnail (Image URL)" required />
+                                    </fieldset>
+
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">Title</legend>
+                                        <input type="text" name='title' defaultValue={data.title} className="input w-full " required placeholder="Title" />
+                                    </fieldset>
+
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">Description</legend>
+                                        <input type="text" name='description' defaultValue={data.description} className="input w-full " required placeholder="Description" />
+                                    </fieldset>
+
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">Category</legend>
+                                        <select className="input w-full" defaultValue={data.category} name="category" id="day" required>
+                                            <option disabled={true}>Select A Category</option>
+                                            <option value="Human">Human</option>
+                                            <option value="Gadgets">Gadgets</option>
+                                            <option value="Pets">Pets</option>
+                                            <option value="Documants">Documants</option>
+                                        </select>
+                                    </fieldset>
+
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">Location</legend>
+                                        <input type="text" name='location' defaultValue={data.location} className="input w-full " required placeholder="Location" />
+                                    </fieldset>
+
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">Date</legend>
+                                        <input type="date" name='date' defaultValue={data.date} className="input w-full " required placeholder="RecoveredDate" />
+                                    </fieldset>
+
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">Contact</legend>
+                                        <input type="email" name='email' defaultValue={data?.email} className="input w-full " required placeholder="RecoveredDate" />
+                                        <input type="text" name='name' defaultValue={data?.displayName} className="input w-full " required placeholder="RecoveredDate" />
+                                    </fieldset>
+
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">RecoveredLocation</legend>
+                                        <input type="text" name='recoveredLocation' className="input w-full " required placeholder="RecoveredLocation" />
+                                    </fieldset>
+
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">RecoveredDate</legend>
+                                        <DatePicker
+                                            selected={selectedDate}
+                                            onChange={(date) => setSelectedDate(date)}
+                                            defaultValue={data.date}
+                                            customInput={<ExampleCustomInput className="input w-full" />}
+                                        />
+                                    </fieldset>
+
+                                    <fieldset className="fieldset">
+                                        <legend className="fieldset-legend">Recovered person info </legend>
+                                        <input type="email" name='recoveredemail' value={user?.email || ''} className="input w-full " placeholder="User Email" readOnly />
+                                        <input type="text" name='recoveredname' value={user?.displayName || ''} className="input w-full " placeholder="User Email" readOnly />
+                                        <input type="text" name='recoveredphoto' value={user?.photoURL || ''} className="input w-full " placeholder="User Email" readOnly />
+                                    </fieldset>
+
+                                    <button type='submit' className='btn btn-primary'>Recovered</button>
+
+                                </form>
                             </div>
                         </div>)
                     }
