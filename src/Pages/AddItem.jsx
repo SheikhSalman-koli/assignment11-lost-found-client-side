@@ -2,10 +2,14 @@ import React, { forwardRef, use, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const AddItem = () => {
 
     const { user, isLoading } = use(AuthContext)
+
     const [selectedDate, setSelectedDate] = useState(new Date());
     const formated = selectedDate.toLocaleDateString('en-GB')
     const ExampleCustomInput = forwardRef(
@@ -22,7 +26,18 @@ const AddItem = () => {
         const formData = new FormData(form)
         const newItem = Object.fromEntries(formData.entries())
         const data = {...newItem, date:formated}
-        console.log(data);
+        // console.log(data);
+
+        axios.post('http://localhost:3000/additem',data)
+        .then(res=>{
+            console.log(res.data);
+            if(res.data.insertedId){
+                Swal.fire('An Item Added Successfully!')
+            }
+        }) 
+        .catch(error=>{
+            toast.error(error.message)
+        })
     }
 
 
@@ -31,7 +46,7 @@ const AddItem = () => {
             <div className='p-12 text-center space-y-4'>
                 <h1 className="text-6xl text-[#F4B400]">Add Item</h1>
             </div>
-            <form onSubmit={handleAdd}>
+            <form onSubmit={handleAdd} onKeyDown={(e) => e.key === 'Enter' && e.preventDefault()}>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                     {/* Post type */}
                     <fieldset className="fieldset  border-2 border-[#2C7BE5] bg-gradient-to-r from-[#F4B400] to-gray-50 rounded-box p-4">
@@ -80,7 +95,6 @@ const AddItem = () => {
                     <fieldset className="fieldset  border-2 border-[#2C7BE5] bg-gradient-to-r from-[#F4B400] to-gray-50 rounded-box p-4">
                         <label className="label font-bold text-black text-[18px]">Date</label>
                         <DatePicker
-                            name='date'
                             selected={selectedDate}
                             onChange={(date) => setSelectedDate(date)}
                             customInput={<ExampleCustomInput className="input w-full" />}

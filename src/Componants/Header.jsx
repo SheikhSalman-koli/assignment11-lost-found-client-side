@@ -36,7 +36,7 @@ const Header = () => {
                             <li>
                                 <NavLink to='/additem'>Add Item</NavLink>
                             </li>
-                            <li> <NavLink to='/create'>Create Group</NavLink></li>
+                            <li> <NavLink to='/allitem'>All-Item</NavLink></li>
                         </ul>
                     </div>
                     <img className='w-10 h-10 rounded-full border-2 border-[#2C7BE5]' src={logo} alt="empty for now" />
@@ -48,7 +48,7 @@ const Header = () => {
                         <li>
                             <NavLink to='/additem'>Add Item</NavLink>
                         </li>
-                        <li> <NavLink to='/create'>Create Group</NavLink></li>
+                        <li> <NavLink to='/allitem'>All-Item</NavLink></li>
                     </ul>
                 </div>
 

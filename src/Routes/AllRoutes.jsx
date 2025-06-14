@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Signin from "../Pages/Signin";
 import Signup from "../Pages/Signup";
 import AddItem from "../Pages/AddItem";
+import AllItem from "../Pages/AllItem";
 
 export const routes = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ export const routes = createBrowserRouter([
             {
                 path: 'additem',
                 Component: AddItem
+            },
+            {
+                path: 'allitem',
+                Component: AllItem
             },
             {
                 path: 'signin',
