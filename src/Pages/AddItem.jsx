@@ -14,7 +14,7 @@ const AddItem = () => {
     const formated = selectedDate.toLocaleDateString('en-GB')
     const ExampleCustomInput = forwardRef(
         ({ value, onClick, className }, ref) => (
-            <button className={className} onClick={onClick} ref={ref}>
+            <button type='button' className={className} onClick={onClick} ref={ref}>
                 {value}
             </button>
         ),
@@ -80,10 +80,10 @@ const AddItem = () => {
                         <label className="label font-bold text-black text-[18px]">Category</label>
                         <select className="input w-full " name="category" id="day" required>
                             <option disabled={true}>Select A Category</option>
-                            <option value="Lost">Human</option>
-                            <option value="Found">Gadgets</option>
-                            <option value="Found">Pets</option>
-                            <option value="Found">Documants</option>
+                            <option value="Human">Human</option>
+                            <option value="Gadgets">Gadgets</option>
+                            <option value="Pets">Pets</option>
+                            <option value="Documants">Documants</option>
                         </select>
                     </fieldset>
                     {/* location */}

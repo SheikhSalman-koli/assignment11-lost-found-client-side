@@ -6,8 +6,9 @@ import { toast } from 'react-toastify';
 
 const AllItem = () => {
 
+    
     const [items, setItems] = useState()
-    console.log(items);
+    // console.log(items);
 
     useEffect(() => {
         axios('http://localhost:3000/allitem')
@@ -26,7 +27,7 @@ const AllItem = () => {
             {
                 items?.map(item => <div key={item._id} className="card bg-base-100  border-2 border-[#2C7BE5] shadow-sm">
                     <figure>
-                        <img className=''
+                        <img className='h-[200px] w-full'
                             src={item.thumbnail}
                             alt="Shoes" />
                     </figure>
