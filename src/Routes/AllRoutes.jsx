@@ -7,6 +7,7 @@ import AddItem from "../Pages/AddItem";
 import AllItem from "../Pages/AllItem";
 import Dtails from "../Pages/Dtails";
 import axios from "axios";
+import MyItem from "../Pages/MyItem";
 
 export const routes = createBrowserRouter([
     {
@@ -29,6 +30,11 @@ export const routes = createBrowserRouter([
                 path: 'details/:id',
                 loader: ({params})=> axios(`http://localhost:3000/details/${params.id}`),
                 Component: Dtails
+            },
+             {
+                path: 'myitem/:email',
+                loader: ({params})=> axios(`http://localhost:3000/myitem/${params.email}`),
+                Component: MyItem
             },
             {
                 path: 'signin',
