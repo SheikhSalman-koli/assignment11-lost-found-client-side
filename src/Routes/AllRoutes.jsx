@@ -29,7 +29,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'allitem',
-                Component: AllItem
+                Component: AllItem,
             },
              {
                 path: 'details/:id',

@@ -113,14 +113,14 @@ const AddItem = () => {
                                 (<span className="loading loading-bars loading-lg"></span>)
                                 :
                                 <>
-                                <input type="email" name='email' value={`Email: ${user?.email || ''}`} className="input w-full " placeholder="User Email" readOnly />
-                                <input type="text" name='name' value={`Name: ${user?.displayName || ''}`} className="input w-full " placeholder="User Email" readOnly />
+                                <input type="email" name='email' value={user?.email || ''} className="input w-full " placeholder="User Email" readOnly />
+                                <input type="text" name='name' value={user?.displayName || ''} className="input w-full " placeholder="User Email" readOnly />
                                 </>
                         }
                     </fieldset>
                 </div>
 
-                <input type="submit" className='btn w-full mt-5 text-black text-[18px] bg-[#F4B400]' value="Add Item" />
+                <input type="submit" className='btn w-full mt-5 text-black text-[18px] bg-[#F4B400] hover:rounded-4xl' value="Add Item" />
             </form>
         </div>
     );

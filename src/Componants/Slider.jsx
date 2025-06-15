@@ -18,7 +18,6 @@ const Slider = () => {
                     pauseOnHover: true,
                     perPage: 1,
                 }}          
-                 hasAutoplay
             >
                 <SplideSlide >
                     <div className='relative'>

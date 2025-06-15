@@ -106,12 +106,12 @@ const Dtails = () => {
                 {/* Contact Information */}
                 <div className="mt-5 p-4 border border-gray-300 rounded-lg bg-gray-50">
                     <h3 className="text-lg font-semibold mb-2">Contact Information:</h3>
-                    {/* <p><strong>Name:</strong> {data.contact.name}</p> */}
+                    <p><strong>Name:</strong> {data.name}</p>
                     <p><strong>Email:</strong> {data.email}</p>
                 </div>
                 <div className="card-actions justify-end mt-4">
 
-                    <button onClick={handleModal} className="btn btn-primary">{data.type === 'Lost' ? 'Found This!' : 'This is mine'}</button>
+                    <button onClick={handleModal} className="btn bg-[#28A745] hover:rounded-4xl text-white">{data.type === 'Lost' ? 'Found This!' : 'This is mine'}</button>
 
                     {
                         openmodal &&
@@ -199,7 +199,7 @@ const Dtails = () => {
                                         <input type="text" name='recoveredphoto' value={user?.photoURL || ''} className="input w-full " placeholder="User Email" readOnly />
                                     </fieldset>
 
-                                    <button type='submit' className='btn btn-primary'>Recovered</button>
+                                    <button type='submit' className='btn bg-[#28A745] hover:rounded-4xl text-white'>Recovered</button>
 
                                 </form>
                             </div>
