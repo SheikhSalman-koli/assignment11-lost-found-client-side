@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
@@ -8,6 +8,10 @@ const Signup = () => {
 
     const { createUser, updateUser, setUser, googleSign } = use(AuthContext)
     const navigate = useNavigate()
+
+     useEffect(() => {
+            document.title = "Register";
+        },[]);
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -39,11 +43,11 @@ const Signup = () => {
         // console.log(usser);
         updateUser({ displayName: name, photoURL: photo })
             .then(() => {
-                setUser({ ...usser, displayName: name, photoURL: photo });
                 Swal.fire({
                     title: 'logged in successfully',
                     icon: 'success'
                 })
+                setUser({ ...usser, displayName: name, photoURL: photo });
                 navigate('/')
             })
             .catch((error) => {

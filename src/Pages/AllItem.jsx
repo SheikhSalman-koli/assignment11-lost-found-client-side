@@ -9,6 +9,9 @@ const AllItem = () => {
     
     const [items, setItems] = useState()
     // console.log(items);
+     useEffect(() => {
+            document.title = "All Item";
+        },[]);
 
     useEffect(() => {
         axios('http://localhost:3000/allitem')

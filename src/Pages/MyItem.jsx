@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import Table from '../Componants/Table';
-import { HiH1 } from 'react-icons/hi2';
 
 const MyItem = () => {
 
@@ -9,6 +8,9 @@ const MyItem = () => {
     
     const [items, setItems] = useState(myitems.data)
 
+     useEffect(() => {
+            document.title = "My Item";
+        },[]);
     // console.log(items);
     return (
         <div className='my-10'>

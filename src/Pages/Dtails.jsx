@@ -1,4 +1,4 @@
-import React, { forwardRef, use, useState } from 'react';
+import React, { forwardRef, use, useEffect, useState } from 'react';
 import { RiCloseLargeFill } from 'react-icons/ri';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
@@ -10,7 +10,10 @@ import Swal from 'sweetalert2';
 const Dtails = () => {
 
     const { data } = useLoaderData()
-    // console.log(data);
+    // console.log(data);,
+     useEffect(() => {
+            document.title = "Details";
+        },[]);
 
     const { user } = use(AuthContext)
     // modal

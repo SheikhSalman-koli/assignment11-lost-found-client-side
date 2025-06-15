@@ -1,4 +1,4 @@
-import React, { forwardRef, use, useState } from 'react';
+import React, { forwardRef, use, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,6 +19,10 @@ const AddItem = () => {
             </button>
         ),
     );
+
+     useEffect(() => {
+            document.title = "Add Item";
+        },[]);
 
     const handleAdd =(e)=>{
         e.preventDefault()

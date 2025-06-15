@@ -1,7 +1,8 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Signin = () => {
 
@@ -48,6 +49,9 @@ const Signin = () => {
             })
     }
 
+ useEffect(() => {
+            document.title = "Signin";
+        },[]);
 
     const googleSignin =()=>{
         googleSign()
