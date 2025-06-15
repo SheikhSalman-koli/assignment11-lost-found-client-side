@@ -6,7 +6,7 @@ import { auth } from '../Componants/firebase/credential';
 
 const AuthProvider = ({children}) => {
     
-    const [user, setUser] = useState()
+    const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     console.log(user);
 
@@ -36,11 +36,11 @@ const AuthProvider = ({children}) => {
     }
    
     useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, (currentUser)=>{
+        const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
             setUser(currentUser)
              setIsLoading(false)
         })
-        return ()=> unSubscribe()
+        return () => unsubscribe()
     },[])
     
 

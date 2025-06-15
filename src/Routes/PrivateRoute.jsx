@@ -6,11 +6,11 @@ const PrivateRoute = ({children}) => {
 
     const {user} = use(AuthContext)
 
-    if(user){
-        return children
+    if(!user){
+        return <Navigate to='/signin'></Navigate>
     }
 
-    return <Navigate to='/signin'></Navigate>
+    return children
 };
 
 export default PrivateRoute;
