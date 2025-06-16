@@ -51,8 +51,8 @@ const Header = () => {
                             <NavLink to='/additem'>Add Item</NavLink>
                         </li>
                         <li> <NavLink to='/allitem'>All-Item</NavLink></li>
-                         <li> <NavLink to={`/myitem/${user?.email}`}>My-Item</NavLink></li>
-                         <li> <NavLink to={`/recovered/${user?.email}`}>Recovered</NavLink></li>
+                        <li> <NavLink to={`/myitem/${user?.email}`}>My-Item</NavLink></li>
+                        <li> <NavLink to={`/recovered/${user?.email}`}>Recovered</NavLink></li>
                     </ul>
                 </div>
 
@@ -61,8 +61,21 @@ const Header = () => {
                         user ? <>
                             <div className='flex gap-2.5'>
                                 <button onClick={handleLogout} className='text-[12px] font-bold'>logout</button>
-                              <img className='w-10 h-10 rounded-full mr-1' src={user.photoURL} alt="" data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} />
-                                <Tooltip id="my-tooltip" />
+
+                                <div className="dropdown">
+                                    <div tabIndex={0} role="button" className="">
+                                        <img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} />
+                                        <Tooltip id="my-tooltip" />
+                                    </div>
+                                    <ul
+                                        tabIndex={0}
+                                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 right-0 p-2 shadow">
+                                        <li> <NavLink to='/additem'>Add Item</NavLink></li>
+                                        <li> <NavLink to={`/recovered/${user?.email}`}>Recovered</NavLink></li>
+                                        <li> <NavLink to={`/myitem/${user?.email}`}>My-Item</NavLink></li>
+                                    </ul>
+                                </div>
+
                             </div>
                         </>
                             :

@@ -119,7 +119,7 @@ const Dtails = () => {
                             <div className={`p-5 bg-white rounded-lg min-w-[400px]  bg-[url(../assets/hero_img.jpg)] space-y-4`}>
 
                                 <div className='flex justify-between'>
-                                    <h3 className="text-2xl"></h3>
+                                    <h3 className="text-2xl">Recover form</h3>
                                     <label className='z-[999]'>
                                         <button className='btn btn-warning' onClick={closeModal}><RiCloseLargeFill size={20} /></button>
                                     </label>
@@ -199,7 +199,7 @@ const Dtails = () => {
                                         <input type="text" name='recoveredphoto' value={user?.photoURL || ''} className="input w-full " placeholder="User Email" readOnly />
                                     </fieldset>
 
-                                    <button type='submit' className='btn bg-[#28A745] hover:rounded-4xl text-white'>Recovered</button>
+                                    <button type='submit' className='btn bg-[#28A745] hover:rounded-4xl text-white'>Recovere</button>
 
                                 </form>
                             </div>

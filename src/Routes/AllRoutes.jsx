@@ -23,7 +23,6 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'additem',
-                // Component: AddItem,
                 element:<PrivateRoute>
                     <AddItem></AddItem>
                 </PrivateRoute>
@@ -35,15 +34,14 @@ export const routes = createBrowserRouter([
              {
                 path: 'details/:id',
                 loader: ({params})=> axios(`http://localhost:3000/details/${params.id}`),
-                // Component: Dtails,
                  element:<PrivateRoute>
                     <Dtails></Dtails>
-                </PrivateRoute>
+                </PrivateRoute>,
+                
             },
              {
                 path: 'myitem/:email',
                 loader: ({params})=> axios(`http://localhost:3000/myitem/${params.email}`),
-                // Component: MyItem,
                 element:<PrivateRoute>
                     <MyItem></MyItem>
                 </PrivateRoute>
