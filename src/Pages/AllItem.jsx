@@ -9,21 +9,22 @@ const AllItem = () => {
 
     const [loader, setLoader] = useState(false)
     const [items, setItems] = useState()
-    // console.log(items);
+    const [search, setSearch] = useState('')
+    // console.log(search);
     useEffect(() => {
         document.title = "All Item";
     }, []);
 
     useEffect(() => {
         setLoader(true)
-        axios('http://localhost:3000/allitem')
+        axios(`http://localhost:3000/allitem?searchParams=${search}`)
             .then(res => {
                 setItems(res.data)
                 setLoader(false)
             }).catch(error => {
                 toast.error(error.message)
             })
-    }, [])
+    }, [search])
 
 
     return (
@@ -41,7 +42,12 @@ const AllItem = () => {
                         <path d="m21 21-4.3-4.3"></path>
                     </g>
                 </svg>
-                <input type="search" required placeholder="Search" />
+                <input 
+                type="search" 
+                required 
+                placeholder="Search" 
+                onChange={(e)=>setSearch(e.target.value)}
+                />
             </label>
             <h2 className="text-6xl text-center text-[#F4B400] mb-4">All Item</h2>
             {
