@@ -85,7 +85,7 @@ const Table = ({ item, index, items, setItems }) => {
 
     return (
         <tr>
-            <th>
+            <th className='hidden lg:block'>
                 {index + 1}
             </th>
             <td>
@@ -97,13 +97,13 @@ const Table = ({ item, index, items, setItems }) => {
                                 alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
-                    <div>
+                    <div className='hidden lg:block'>
                         <div className="font-bold">{item.title}</div>
                     </div>
                 </div>
             </td>
-            <td>{item.location}</td>
             <td>{item.type}</td>
+            <td>{item.location}</td>
             <th className='flex items-center flex-col lg:flex-row gap-1'>
 
                 <button onClick={handleModal} className="btn btn-secondary btn-xs"><BsVectorPen size={20} /></button>

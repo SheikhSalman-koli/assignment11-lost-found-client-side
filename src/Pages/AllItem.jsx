@@ -27,7 +27,7 @@ const AllItem = () => {
 
 
     return (
-        <div className='my-10'>
+        <div className='my-10 max-w-11/12 mx-auto'>
             <h2 className="text-6xl text-center text-[#F4B400] mb-4">All Item</h2>
             {
                 loader ? (<Spinner></Spinner>)

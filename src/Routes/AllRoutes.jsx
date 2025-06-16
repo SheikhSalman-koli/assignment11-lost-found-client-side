@@ -10,6 +10,7 @@ import axios from "axios";
 import MyItem from "../Pages/MyItem";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "../Pages/NotFound";
+import Recovered from "../Pages/Recovered";
 
 export const routes = createBrowserRouter([
     {
@@ -45,6 +46,13 @@ export const routes = createBrowserRouter([
                 // Component: MyItem,
                 element:<PrivateRoute>
                     <MyItem></MyItem>
+                </PrivateRoute>
+            },
+            {
+                path: 'recovered/:email',
+                loader : ({params})=> axios(`http://localhost:3000/recovered/${params.email}`),
+                element: <PrivateRoute>
+                    <Recovered></Recovered>
                 </PrivateRoute>
             },
             {

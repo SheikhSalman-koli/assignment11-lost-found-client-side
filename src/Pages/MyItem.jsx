@@ -13,7 +13,7 @@ const MyItem = () => {
         },[]);
     // console.log(items);
     return (
-        <div className='my-10'>
+        <div className='my-10 max-w-11/12 mx-auto'>
             <h2 className="text-5xl text-[#F4B400] mb-4 text-center">My Items</h2>
 
             {items.length < 1 ?
@@ -30,12 +30,12 @@ const MyItem = () => {
                             {/* head */}
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th className='hidden lg:block'>
                                         No.
                                     </th>
-                                    <th>Name</th>
-                                    <th>Location</th>
+                                    <th>Photo</th>
                                     <th>Type</th>
+                                    <th>Location</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
