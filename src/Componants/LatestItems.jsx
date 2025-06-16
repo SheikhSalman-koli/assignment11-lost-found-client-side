@@ -5,6 +5,7 @@ import Spinner from './Spinner';
 import { Link } from 'react-router';
 import { FcViewDetails } from 'react-icons/fc';
 import { FaArrowRightLong } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 const LatestItems = () => {
 
@@ -29,9 +30,15 @@ const LatestItems = () => {
             {
                 loader ? (<Spinner></Spinner>)
                     :
-                    (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                    (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7'>
                         {
-                            latest?.map(item => <div key={item._id} className="card bg-base-100  border-2 border-[#2C7BE5] shadow-sm">
+                            latest?.map(item => <motion.div
+                                key={item._id}
+                                className="card bg-base-100  border-2 border-[#2C7BE5] shadow-sm"
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.8 }}
+                                transition={{ duration: 0.5 }}
+                            >
                                 <figure>
                                     <img className='h-[200px] w-full'
                                         src={item.thumbnail}
@@ -52,7 +59,7 @@ const LatestItems = () => {
                                         <Link to={`/details/${item._id}`}> <button className="btn bg-[#28A745] text-white hover:rounded-4xl"><FcViewDetails /> Details</button></Link>
                                     </div>
                                 </div>
-                            </div>)
+                            </motion.div>)
                         }
                     </div>)
             }

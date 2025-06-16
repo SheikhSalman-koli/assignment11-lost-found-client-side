@@ -10,10 +10,10 @@ import Swal from 'sweetalert2';
 const Dtails = () => {
 
     const { data } = useLoaderData()
-    // console.log(data);,
-     useEffect(() => {
-            document.title = "Details";
-        },[]);
+    // console.log(data);
+    useEffect(() => {
+        document.title = "Details";
+    }, []);
 
     const { user } = use(AuthContext)
     // modal
@@ -27,7 +27,7 @@ const Dtails = () => {
     }
     // date picker
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const formated = selectedDate.toLocaleDateString('en-GB')
+    const formated = selectedDate.toISOString().split('T')[0]
     const ExampleCustomInput = forwardRef(
         ({ value, onClick, className }, ref) => (
             <button type='button' className={className} onClick={onClick} ref={ref}>
@@ -42,6 +42,7 @@ const Dtails = () => {
         const formData = new FormData(form)
         const recoverdData = Object.fromEntries(formData.entries())
         const allData = { ...recoverdData, recoverdDate: formated }
+        // console.log(allData);
 
         Swal.fire({
             title: "Are you sure?",
@@ -52,7 +53,7 @@ const Dtails = () => {
             confirmButtonText: "Yes, post it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.post(`http://localhost:3000/recovered`, allData)
+                axios.post(`http://localhost:3000/recovered/${data._id}`, allData)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.insertedId)
@@ -62,7 +63,7 @@ const Dtails = () => {
                                 icon: "success"
                             });
                     }).catch(error => {
-                         toast.error(error.message)
+                        toast.error(error.message)
                     })
             }
         });
@@ -128,7 +129,7 @@ const Dtails = () => {
                                 <form onSubmit={handleSubmit}>
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Post Type</legend>
-                                        <select className="input w-full" defaultValue={data.type} name="type" id="day" required>
+                                        <select className="input w-full" defaultValue={data.type} name="type" id="day" required readOnly>
                                             <option disabled={true}>Select A Type</option>
                                             <option value="Lost">Lost</option>
                                             <option value="Found">Found</option>
@@ -137,22 +138,22 @@ const Dtails = () => {
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Thumbnail (Image URL)</legend>
-                                        <input type="text" name='thumbnail' defaultValue={data.thumbnail} className="input w-full " placeholder="Thumbnail (Image URL)" required />
+                                        <input type="text" name='thumbnail' defaultValue={data.thumbnail} className="input w-full " placeholder="Thumbnail (Image URL)" required readOnly />
                                     </fieldset>
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Title</legend>
-                                        <input type="text" name='title' defaultValue={data.title} className="input w-full " required placeholder="Title" />
+                                        <input type="text" name='title' defaultValue={data.title} className="input w-full " required placeholder="Title" readOnly />
                                     </fieldset>
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Description</legend>
-                                        <input type="text" name='description' defaultValue={data.description} className="input w-full " required placeholder="Description" />
+                                        <input type="text" name='description' defaultValue={data.description} className="input w-full " required placeholder="Description" readOnly />
                                     </fieldset>
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Category</legend>
-                                        <select className="input w-full" defaultValue={data.category} name="category" id="day" required>
+                                        <select className="input w-full" defaultValue={data.category} name="category" id="day" required readOnly>
                                             <option disabled={true}>Select A Category</option>
                                             <option value="Human">Human</option>
                                             <option value="Gadgets">Gadgets</option>
@@ -163,18 +164,22 @@ const Dtails = () => {
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Location</legend>
-                                        <input type="text" name='location' defaultValue={data.location} className="input w-full " required placeholder="Location" />
+                                        <input type="text" name='location' defaultValue={data.location} className="input w-full " required placeholder="Location" readOnly />
                                     </fieldset>
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Date</legend>
-                                        <input type="date" name='date' defaultValue={data.date} className="input w-full " required placeholder="RecoveredDate" />
+                                        <input type="date"
+                                            name='date'
+                                            defaultValue={data.date}
+                                            className="input w-full "
+                                            required placeholder="RecoveredDate" readOnly />
                                     </fieldset>
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Contact</legend>
-                                        <input type="email" name='email' defaultValue={data?.email} className="input w-full " required placeholder="RecoveredDate" />
-                                        <input type="text" name='name' defaultValue={data?.displayName} className="input w-full " required placeholder="RecoveredDate" />
+                                        <input type="email" name='email' defaultValue={data?.email} className="input w-full " required placeholder="RecoveredDate" readOnly />
+                                        <input type="text" name='name' defaultValue={data?.name} className="input w-full " required placeholder="RecoveredDate" readOnly />
                                     </fieldset>
 
                                     <fieldset className="fieldset">
@@ -187,7 +192,6 @@ const Dtails = () => {
                                         <DatePicker
                                             selected={selectedDate}
                                             onChange={(date) => setSelectedDate(date)}
-                                            defaultValue={data.date}
                                             customInput={<ExampleCustomInput className="input w-full" />}
                                         />
                                     </fieldset>
@@ -199,8 +203,15 @@ const Dtails = () => {
                                         <input type="text" name='recoveredphoto' value={user?.photoURL || ''} className="input w-full " placeholder="User Email" readOnly />
                                     </fieldset>
 
-                                    <button type='submit' className='btn bg-[#28A745] hover:rounded-4xl text-white'>Recovere</button>
-
+                                    <button
+                                        type='submit'
+                                        disabled={data.status === "recovered"}
+                                        className={`btn bg-[#28A745] hover:rounded-4xl text-white mt-3
+                                        ${data.status === "recovered" ? "cursor-not-allowed" : ""}
+                                        `}
+                                    >
+                                        {data.status === "recovered" ? "Already Recovered" : "Mark as Recovered"}
+                                    </button>
                                 </form>
                             </div>
                         </div>)

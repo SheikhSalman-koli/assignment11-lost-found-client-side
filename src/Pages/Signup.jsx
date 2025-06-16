@@ -76,15 +76,15 @@ const Signup = () => {
 
     return (
         <div className='my-5'>
-            <div className="card bg-base-100 w-full max-w-sm mx-auto mt-10 shrink-0 border-2 border-fuchsia-300 font-light">
+            <div className="card bg-base-100 w-full max-w-sm mx-auto mt-10 shrink-0 border-2 border-[#2C7BE5] font-light">
                 <div className="card-body">
                     <h2 className='text-2xl font-bold'>Create an acount</h2>
 
                     <form onSubmit={handleRegister} className="fieldset space-y-5">
 
-                        <input name='name' type="text" className="border-b-1 text-[16px] font-semibold border-gray-200 focus:outline-none" placeholder="Name" />
+                        <input name='name' type="text" className="border-b-1 text-[16px] font-semibold border-gray-200 focus:outline-none" placeholder="Name" required/>
 
-                        <input name='photo' type="text" className="border-b-1 text-[16px] font-semibold border-gray-200 focus:outline-none" placeholder="Photo_url" />
+                        <input name='photo' type="text" className="border-b-1 text-[16px] font-semibold border-gray-200 focus:outline-none" placeholder="Photo_url" required/>
 
                         <input
                             type="email"
@@ -98,9 +98,9 @@ const Signup = () => {
                             className="border-b-1 text-[16px] font-semibold border-gray-200 focus:outline-none"
                             placeholder="Password"
                         />
-                        <button type='submit' className="btn btn-ghost  bg-fuchsia-400 text-black hover:text-fuchsia-400 hover:bg-black text-[20px] mt-4">Register</button>
+                        <button type='submit' className="btn btn-ghost  bg-[#28A745] text-white hover:rounded-4xl text-[20px] mt-4">Register</button>
                         {/* {showError && <p className='text-[18px] font-bold text-red-500 italic'>{showError}</p>} */}
-                        <p className='text-center text-[18px] font-semibold'>Already have an acount? <Link to='/signin'><span className='font-semibold text-fuchsia-500 text-[18px]'>Login</span></Link></p>
+                        <p className='text-center text-[18px] font-semibold'>Already have an acount? <Link to='/signin'><span className='font-semibold text-[#2C7BE5] text-[18px]'>Login</span></Link></p>
                     </form>
                 </div>
             </div>

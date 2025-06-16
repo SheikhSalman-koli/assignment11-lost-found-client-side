@@ -11,7 +11,7 @@ const AddItem = () => {
     const { user, isLoading } = use(AuthContext)
 
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const formated = selectedDate.toLocaleDateString('en-GB')
+    const formated = selectedDate.toISOString().split('T')[0]
     const ExampleCustomInput = forwardRef(
         ({ value, onClick, className }, ref) => (
             <button type='button' className={className} onClick={onClick} ref={ref}>
@@ -46,7 +46,7 @@ const AddItem = () => {
 
 
     return (
-        <div className='mb-10'>
+        <div className='mb-10 max-w-11/12 mx-auto'>
             <div className='p-12 text-center space-y-4'>
                 <h1 className="text-6xl text-[#F4B400]">Add Item</h1>
             </div>
@@ -103,6 +103,7 @@ const AddItem = () => {
                             onChange={(date) => setSelectedDate(date)}
                             customInput={<ExampleCustomInput className="input w-full" />}
                         />
+                         <input type="text" name='status' className="input w-full " required placeholder="status" />
                     </fieldset>
 
                     {/* Contact Information   */}

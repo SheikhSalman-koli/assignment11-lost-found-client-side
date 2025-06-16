@@ -10,8 +10,9 @@ import { toast } from 'react-toastify';
 
 const Table = ({ item, index, items, setItems }) => {
 
-    // console.log(item);
+    console.log(item);
     const { user } = use(AuthContext)
+    const [update, setUpdate] = useState(item)
     // modal
     const [openmodal, setOpenmodal] = useState(false)
     const handleModal = () => {
@@ -22,22 +23,22 @@ const Table = ({ item, index, items, setItems }) => {
         setOpenmodal(false)
     }
     // datePicker
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const formated = selectedDate.toLocaleDateString('en-GB')
-    const ExampleCustomInput = forwardRef(
-        ({ value, onClick, className }, ref) => (
-            <button type='button' className={className} onClick={onClick} ref={ref}>
-                {value}
-            </button>
-        ),
-    );
+    // const [selectedDate, setSelectedDate] = useState(new Date());
+    // const formated = selectedDate.toLocaleDateString('en-GB')
+    // const ExampleCustomInput = forwardRef(
+    //     ({ value, onClick, className }, ref) => (
+    //         <button type='button' className={className} onClick={onClick} ref={ref}>
+    //             {value}
+    //         </button>
+    //     ),
+    // );
     // handle update
     const handleUpdate = (e) => {
         e.preventDefault()
         const form = e.target;
         const formData = new FormData(form)
-        const data = Object.fromEntries(formData.entries())
-        const updated = { ...data, date: formated }
+        const updated = Object.fromEntries(formData.entries())
+        // const updated = { ...data, date: formated }
         axios.put(`http://localhost:3000/myitem/${item._id}`, updated)
             .then(res => {
                 if (res.data.modifiedCount) {
@@ -47,6 +48,7 @@ const Table = ({ item, index, items, setItems }) => {
                         icon: "success"
                     });
                 }
+                setUpdate(update)
                 // console.log(res.data);
             }).catch(error => {
                 toast.error(error.message)
@@ -74,10 +76,10 @@ const Table = ({ item, index, items, setItems }) => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            const remainingItems = items.filter(i=> i._id !== item._id)
-                            setItems(remainingItems)
+                        const remainingItems = items.filter(i => i._id !== item._id)
+                        setItems(remainingItems)
                     }).catch(error => {
-                         toast.error(error.message)
+                        toast.error(error.message)
                     })
             }
         });
@@ -93,17 +95,17 @@ const Table = ({ item, index, items, setItems }) => {
                     <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
                             <img
-                                src={item.thumbnail}
+                                src={update.thumbnail}
                                 alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
                     <div className='hidden lg:block'>
-                        <div className="font-bold">{item.title}</div>
+                        <div className="font-bold">{update.title}</div>
                     </div>
                 </div>
             </td>
-            <td>{item.type}</td>
-            <td>{item.location}</td>
+            <td>{update.type}</td>
+            <td>{update.location}</td>
             <th className='flex items-center flex-col lg:flex-row gap-1'>
 
                 <button onClick={handleModal} className="btn btn-secondary btn-xs"><BsVectorPen size={20} /></button>
@@ -161,14 +163,22 @@ const Table = ({ item, index, items, setItems }) => {
                                     <input type="text" name='location' defaultValue={item.location} className="input w-full " required placeholder="Location" />
                                 </fieldset>
 
-                                <fieldset className="fieldset">
+                                {/* <fieldset className="fieldset">
                                     <legend className="fieldset-legend">Date</legend>
                                     <DatePicker
                                         selected={selectedDate}
                                         onChange={(date) => setSelectedDate(date)}
-                                        defaultValue={item.date}
+                        
                                         customInput={<ExampleCustomInput className="input w-full" />}
                                     />
+                                </fieldset> */}
+                                <fieldset className="fieldset">
+                                    <legend className="fieldset-legend">Date</legend>
+                                    <input type="date"
+                                        name='date'
+                                        defaultValue={item.date}     
+                                        className="input w-full "
+                                        required placeholder="RecoveredDate" />
                                 </fieldset>
 
                                 <fieldset className="fieldset">
@@ -176,7 +186,7 @@ const Table = ({ item, index, items, setItems }) => {
                                     <input type="email" name='email' value={user?.email || ''} className="input w-full " placeholder="User Email" readOnly />
                                 </fieldset>
 
-                                <button type='submit' className='btn btn-primary mt-3'>Update</button>
+                                <button type='submit' className='btn bg-[#28A745] hover:rounded-4xl text-white mt-3'>Update</button>
 
                             </form>
 

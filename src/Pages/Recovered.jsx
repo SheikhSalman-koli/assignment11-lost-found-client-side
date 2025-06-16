@@ -21,7 +21,7 @@ const Recovered = () => {
                             {/* head */}
                             <thead>
                                 <tr>
-                                    <th>No.</th>
+                                    <th className='hidden lg:block'>No.</th>
                                     <th>Title</th>
                                     <th>Category</th>
                                     <th>Lost At</th>
@@ -32,8 +32,11 @@ const Recovered = () => {
                             <tbody>
                               {
                                 recovereds.map((recovered, index)=> <tr key={recovered._id} className="hover:bg-base-300">
-                                    <th>{index + 1}</th>
-                                    <td>{recovered.title}</td>
+                                    <th className='hidden lg:block'>{index + 1}</th>
+                                    <td>
+                                        {recovered.title.split(' ').slice(0,3).join(' ')}
+                                        {recovered.title.split(' ').length > 2 ? '...' : ''}
+                                    </td>
                                     <td>{recovered.category}</td>
                                     <td>{recovered.location}</td>
                                     <td>{recovered.recoveredLocation}</td>

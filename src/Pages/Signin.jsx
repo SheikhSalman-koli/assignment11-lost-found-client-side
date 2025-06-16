@@ -72,7 +72,7 @@ const Signin = () => {
     return (
         <div>
             <div className='my-5'>
-                <div className="card bg-base-100 w-full max-w-sm mx-auto mt-10 shrink-0 border-2 border-fuchsia-300 font-light">
+                <div className="card bg-base-100 w-full max-w-sm mx-auto mt-10 shrink-0 border-2 border-[#2C7BE5] font-light">
                     <div className="card-body">
                         <h2 className='text-2xl font-bold'>Login</h2>
                         <form onSubmit={handleLogin} className="fieldset space-y-5">
@@ -80,7 +80,7 @@ const Signin = () => {
                             <input 
                             name='email'
                             type="email"
-                              
+                              required
                             className="border-b-1 text-[16px] font-semibold border-gray-200 focus:outline-none"
                              placeholder="Email"
                            
@@ -88,9 +88,9 @@ const Signin = () => {
 
                             <input name='password' type="password" className="border-b-1  text-[16px] font-semibold border-gray-200 focus:outline-none" placeholder="Password" />
 
-                            <button type='submit' className="btn btn-ghost text-[20px] font-bold bg-fuchsia-400 text-black hover:text-fuchsia-400 hover:bg-black  mt-4">Login</button>
+                            <button type='submit' className="btn btn-ghost text-[20px] font-bold bg-[#28A745] text-white hover:rounded-4xl  mt-4">Login</button>
                             {/* {showError && <p className='text-[18px] font-bold text-red-500 italic'>{showError}</p>} */}
-                            <p className='text-center  text-[16px] font-semibold'>don't have an acount? <Link to='/signup'><span className='text-fuchsia-500  text-[16px] font-semibold'>create an acount</span></Link></p>
+                            <p className='text-center  text-[16px] font-semibold'>don't have an acount? <Link to='/signup'><span className='text-[#2C7BE5]  text-[16px] font-semibold'>create an acount</span></Link></p>
                         </form>
                     </div>
                 </div>

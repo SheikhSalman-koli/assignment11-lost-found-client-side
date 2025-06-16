@@ -11,6 +11,7 @@ import MyItem from "../Pages/MyItem";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "../Pages/NotFound";
 import Recovered from "../Pages/Recovered";
+import Spinner from "../Componants/Spinner";
 
 export const routes = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'additem',
-                element:<PrivateRoute>
+                element: <PrivateRoute>
                     <AddItem></AddItem>
                 </PrivateRoute>
             },
@@ -31,40 +32,43 @@ export const routes = createBrowserRouter([
                 path: 'allitem',
                 Component: AllItem,
             },
-             {
+            {
                 path: 'details/:id',
-                loader: ({params})=> axios(`http://localhost:3000/details/${params.id}`),
-                 element:<PrivateRoute>
+                loader: ({ params }) => axios(`http://localhost:3000/details/${params.id}`),
+                element: <PrivateRoute>
                     <Dtails></Dtails>
                 </PrivateRoute>,
-                
+                HydrateFallback: Spinner
             },
-             {
+            {
                 path: 'myitem/:email',
-                loader: ({params})=> axios(`http://localhost:3000/myitem/${params.email}`),
-                element:<PrivateRoute>
+                loader: ({ params }) => axios(`http://localhost:3000/myitem/${params.email}`),
+                element: <PrivateRoute>
                     <MyItem></MyItem>
-                </PrivateRoute>
+                </PrivateRoute>,
+                HydrateFallback: Spinner
             },
             {
                 path: 'recovered/:email',
-                loader : ({params})=> axios(`http://localhost:3000/recovered/${params.email}`),
+                loader: ({ params }) => axios(`http://localhost:3000/recovered/${params.email}`),
                 element: <PrivateRoute>
                     <Recovered></Recovered>
-                </PrivateRoute>
+                </PrivateRoute>,
+                HydrateFallback: Spinner
             },
             {
                 path: 'signin',
                 Component: Signin
             },
-              {
+            {
                 path: 'signup',
                 Component: Signup
             },
-            {
-                path: '*',
-                Component: NotFound
-            }
-        ] 
+
+        ]
+    },
+    {
+        path: '*',
+        Component: NotFound
     }
 ])
