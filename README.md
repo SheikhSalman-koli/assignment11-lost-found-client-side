@@ -1,12 +1,31 @@
-# React + Vite
+# 🔎 Lost-Found-Platform 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and user-friendly platform to report, browse, and recover lost items. Users can post items they have lost or found, and view recoveries made by others — making it easier to reconnect people with their lost belongings.
 
-Currently, two official plugins are available:
+## 🌐 Live URL
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[👉 Visit Live Site](https://lost-found-platform-813af.web.app/)
 
-## Expanding the ESLint configuration
+## 🎯 Purpose
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The goal of this application is to help people report and retrieve lost and found items in a centralized, organized way. It's ideal for campuses, neighborhoods, cities, or organizations where lost item reporting is common.
+
+## 🚀 Key Features
+
+- 📝 Submit lost or found items with image, location, description, and few more information
+- 🧭 Filter and search through title and location
+- 🔄 Toggle between **card** and **table** views in the recovered items section
+- 📦 Categorized item listings (e.g., gadgets, pets, documents)
+- 🔐 Private route protection for authenticated users
+
+## 📦 NPM Packages Used
+
+- `react-router-dom`
+- `axios` 
+- `react-icons`
+- `@splidejs/react-splide` 
+- `react-toastify`
+- `react-tooltip`
+- `sweetalert2`
+
+
