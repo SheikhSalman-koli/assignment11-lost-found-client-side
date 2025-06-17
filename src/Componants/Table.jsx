@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 const Table = ({ item, index, items, setItems }) => {
 
-    console.log(item);
+    // console.log(item);
     const { user } = use(AuthContext)
     const [update, setUpdate] = useState(item)
     // modal
