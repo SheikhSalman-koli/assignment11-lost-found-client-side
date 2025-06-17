@@ -8,11 +8,11 @@ import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 
 
-const Table = ({ item, index, items, setItems }) => {
+const Table = ({ item, index, items, setItems, onUpdate}) => {
 
     // console.log(item);
     const { user } = use(AuthContext)
-    const [update, setUpdate] = useState(item)
+    // const [update, setUpdate] = useState(item)
     // modal
     const [openmodal, setOpenmodal] = useState(false)
     const handleModal = () => {
@@ -47,8 +47,9 @@ const Table = ({ item, index, items, setItems }) => {
                         text: "Your file has been updated",
                         icon: "success"
                     });
+                   onUpdate(item._id, updated)
                 }
-                setUpdate(update)
+                
                 // console.log(res.data);
             }).catch(error => {
                 toast.error(error.message)
@@ -95,17 +96,17 @@ const Table = ({ item, index, items, setItems }) => {
                     <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
                             <img
-                                src={update.thumbnail}
+                                src={item.thumbnail}
                                 alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
                     <div className='hidden lg:block'>
-                        <div className="font-bold">{update.title}</div>
+                        <div className="font-bold">{item.title}</div>
                     </div>
                 </div>
             </td>
-            <td>{update.type}</td>
-            <td>{update.location}</td>
+            <td>{item.type}</td>
+            <td>{item.location}</td>
             <th className='flex items-center flex-col lg:flex-row gap-1'>
 
                 <button onClick={handleModal} className="btn btn-secondary btn-xs"><BsVectorPen size={20} /></button>

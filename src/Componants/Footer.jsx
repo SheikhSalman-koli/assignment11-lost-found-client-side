@@ -31,7 +31,7 @@ const Footer = () => {
                     <a className="link link-hover">FAQs</a>
                 </nav>
 
-                <nav>
+                <nav className='hidden lg:block'>
                     <h6 className="footer-title">Community</h6>
                     <a className="link link-hover">Safety Tips</a>
                     <a className="link link-hover">Success Stories</a>

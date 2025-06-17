@@ -50,16 +50,16 @@ const Dtails = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, post it!"
+            confirmButtonText: "Yes, recover it!"
         }).then((result) => {
             if (result.isConfirmed) {
                 axios.post(`http://localhost:3000/recovered/${data._id}`, allData)
                     .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                         if (res.data.insertedId)
                             Swal.fire({
                                 title: "recovered",
-                                text: "Your item has been Recovered successfully",
+                                text: "This item has been Recovered successfully",
                                 icon: "success"
                             });
                     }).catch(error => {

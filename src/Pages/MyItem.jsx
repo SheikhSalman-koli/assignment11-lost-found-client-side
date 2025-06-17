@@ -12,6 +12,14 @@ const MyItem = () => {
             document.title = "My Item";
         },[]);
     // console.log(items);
+
+    const setUpdatedInState =(id, updatedData)=>{
+        setItems((prevItems)=>
+          prevItems.map((item=>
+            item._id === id ? { ...item, ...updatedData } : item
+          ))
+        )
+    }
     return (
         <div className='my-10 max-w-11/12 mx-auto'>
             <h2 className="text-5xl text-[#F4B400] mb-4 text-center">My Items</h2>
@@ -48,6 +56,7 @@ const MyItem = () => {
                                         item={item}
                                         items={items}
                                         setItems={setItems}
+                                        onUpdate={setUpdatedInState}
                                     ></Table>)
                                 }
                             </tbody>

@@ -4,7 +4,7 @@ A modern and user-friendly platform to report, browse, and recover lost items. U
 
 ## 🌐 Live URL
 
-[👉 Visit Live Site](https://lost-found-platform-813af.web.app/)
+[👉 https://lost-found-platform-813af.web.app](https://lost-found-platform-813af.web.app/)
 
 ## 🎯 Purpose
 

@@ -17,14 +17,6 @@ const Recovered = () => {
     return (
         <div className='my-10 max-w-11/12 mx-auto'>
             <h2 className="text-5xl text-[#F4B400] mb-4 text-center">Recovered Items</h2>
-            <div className='flex justify-end mb-4'>
-                <button
-                className='btn bg-[#28A745] text-white hover:rounded-4xl'
-                onClick={handleLayout}
-                >
-                {layout === "card" ? "Switch to Table View" : "Switch to Card View"} 
-                </button>
-            </div>
             {
                 recovereds.length < 1 ?
                     (<div className='text-center space-y-8'>
@@ -32,7 +24,15 @@ const Recovered = () => {
                     </div>)
                     :
 
-                    <>
+                    <div>
+                        <div className='flex justify-end mb-4'>
+                            <button
+                                className='btn bg-[#28A745] text-white hover:rounded-4xl'
+                                onClick={handleLayout}
+                            >
+                                {layout === "card" ? "Switch to Table View" : "Switch to Card View"}
+                            </button>
+                        </div>
                         {
                             layout === 'card' ?
                                 (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
@@ -72,8 +72,7 @@ const Recovered = () => {
                                     </div>
                                 )
                         }
-                    </>
-
+                    </div>
             }
 
 
