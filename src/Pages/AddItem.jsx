@@ -31,7 +31,7 @@ const AddItem = () => {
         const data = {...newItem, date:formated}
         // console.log(data);
 
-        axios.post('http://localhost:3000/additem',data)
+        axios.post('https://lost-found-server-two.vercel.app/additem',data)
         .then(res=>{
             // console.log(res.data);
             if(res.data.insertedId){

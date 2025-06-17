@@ -34,7 +34,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'details/:id',
-                loader: ({ params }) => axios(`http://localhost:3000/details/${params.id}`),
+                loader: ({ params }) => axios(`https://lost-found-server-two.vercel.app/details/${params.id}`),
                 element: <PrivateRoute>
                     <Dtails></Dtails>
                 </PrivateRoute>,
@@ -42,7 +42,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'myitem/:email',
-                loader: ({ params }) => axios(`http://localhost:3000/myitem/${params.email}`),
+                loader: ({ params }) => axios(`https://lost-found-server-two.vercel.app/myitem/${params.email}`),
                 element: <PrivateRoute>
                     <MyItem></MyItem>
                 </PrivateRoute>,
@@ -50,7 +50,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'recovered/:email',
-                loader: ({ params }) => axios(`http://localhost:3000/recovered/${params.email}`),
+                loader: ({ params }) => axios(`https://lost-found-server-two.vercel.app/recovered/${params.email}`),
                 element: <PrivateRoute>
                     <Recovered></Recovered>
                 </PrivateRoute>,

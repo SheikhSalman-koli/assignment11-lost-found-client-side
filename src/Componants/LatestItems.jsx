@@ -14,7 +14,7 @@ const LatestItems = () => {
     // console.log(latest);
     useEffect(() => {
         setLoader(true)
-        axios('http://localhost:3000/latest')
+        axios('https://lost-found-server-two.vercel.app/latest')
             .then(res => {
                 setLatest(res.data)
                 setLoader(false)

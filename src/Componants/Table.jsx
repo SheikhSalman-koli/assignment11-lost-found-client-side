@@ -39,7 +39,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
         const formData = new FormData(form)
         const updated = Object.fromEntries(formData.entries())
         // const updated = { ...data, date: formated }
-        axios.put(`http://localhost:3000/myitem/${item._id}`, updated)
+        axios.put(`https://lost-found-server-two.vercel.app/myitem/${item._id}`, updated)
             .then(res => {
                 if (res.data.modifiedCount) {
                     Swal.fire({
@@ -68,7 +68,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/myitem/${item._id}`)
+                axios.delete(`https://lost-found-server-two.vercel.app/myitem/${item._id}`)
                     .then(res => {
                         // console.log(res.data);
                         if (res.data.deletedCount)

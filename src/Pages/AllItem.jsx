@@ -17,7 +17,7 @@ const AllItem = () => {
 
     useEffect(() => {
         setLoader(true)
-        axios(`http://localhost:3000/allitem?searchParams=${search}`)
+        axios(`https://lost-found-server-two.vercel.app/allitem?searchParams=${search}`)
             .then(res => {
                 setItems(res.data)
                 setLoader(false)
