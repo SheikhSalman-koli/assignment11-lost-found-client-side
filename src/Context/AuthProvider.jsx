@@ -8,7 +8,7 @@ const AuthProvider = ({children}) => {
     
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
-    console.log(user);
+    // console.log(user);
 
     const provider = new GoogleAuthProvider
 

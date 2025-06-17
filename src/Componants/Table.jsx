@@ -109,7 +109,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
             <td>{item.location}</td>
             <th className='flex items-center flex-col lg:flex-row gap-1'>
 
-                <button onClick={handleModal} className="btn btn-secondary btn-xs"><BsVectorPen size={20} /></button>
+                <button onClick={handleModal} className="btn bg-[#28A745] text-white btn-xs"><BsVectorPen size={20} /></button>
 
                 {
                     openmodal &&
@@ -185,6 +185,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
                                 <fieldset className="fieldset">
                                     <legend className="fieldset-legend">Contact </legend>
                                     <input type="email" name='email' value={user?.email || ''} className="input w-full " placeholder="User Email" readOnly />
+                                     <input type="text" name='name' value={user?.displayName || ''} className="input w-full " placeholder="User Email" readOnly />
                                 </fieldset>
 
                                 <button type='submit' className='btn bg-[#28A745] hover:rounded-4xl text-white mt-3'>Update</button>
@@ -195,7 +196,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
                     </div>)
                 }
 
-                <button onClick={handleDelete} className="btn btn-warning btn-xs"><RiDeleteBin3Fill size={20} /></button>
+                <button onClick={handleDelete} className="btn bg-red-500 text-white btn-xs"><RiDeleteBin3Fill size={20} /></button>
 
             </th>
         </tr>

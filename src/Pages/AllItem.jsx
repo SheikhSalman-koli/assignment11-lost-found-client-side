@@ -49,7 +49,7 @@ const AllItem = () => {
                 onChange={(e)=>setSearch(e.target.value)}
                 />
             </label>
-            <h2 className="text-6xl text-center text-[#F4B400] mb-4">All Item</h2>
+            <h2 className="text-6xl text-center text-[#2C7BE5] mb-4">All Item</h2>
             {
                 loader ? (<Spinner></Spinner>)
                     :

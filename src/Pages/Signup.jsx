@@ -44,7 +44,7 @@ const Signup = () => {
         updateUser({ displayName: name, photoURL: photo })
             .then(() => {
                 Swal.fire({
-                    title: 'logged in successfully',
+                    title: 'user created successfully',
                     icon: 'success'
                 })
                 setUser({ ...usser, displayName: name, photoURL: photo });

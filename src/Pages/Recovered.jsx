@@ -16,11 +16,11 @@ const Recovered = () => {
 
     return (
         <div className='my-10 max-w-11/12 mx-auto'>
-            <h2 className="text-5xl text-[#F4B400] mb-4 text-center">Recovered Items</h2>
+            <h2 className="text-5xl text-[#2C7BE5] mb-4 text-center">Recovered Items</h2>
             {
                 recovereds.length < 1 ?
                     (<div className='text-center space-y-8'>
-                        <h1 className='text-4xl lg:text-8xl px-0 lg:px-40 text-red-500 text-center'>You haven’t recovered any lost items yet!</h1>
+                        <h1 className='text-4xl lg:text-8xl px-0 lg:px-40 text-red-500 text-center'>You haven’t recovered any item yet!</h1>
                     </div>)
                     :
 

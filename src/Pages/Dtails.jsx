@@ -9,7 +9,9 @@ import Swal from 'sweetalert2';
 
 const Dtails = () => {
 
-    const { data } = useLoaderData()
+    const  item  = useLoaderData()
+    const [data, setData] = useState(item.data)
+
     // console.log(data);
     useEffect(() => {
         document.title = "Details";
@@ -56,12 +58,15 @@ const Dtails = () => {
                 axios.post(`http://localhost:3000/recovered/${data._id}`, allData)
                     .then(res => {
                         // console.log(res.data);
-                        if (res.data.insertedId)
+                        if (res.data.insertedId){
                             Swal.fire({
                                 title: "recovered",
                                 text: "This item has been Recovered successfully",
                                 icon: "success"
                             });
+                            setData((prev)=> ({...prev, status: "recovered"}))
+                        }
+
                     }).catch(error => {
                         toast.error(error.message)
                     })

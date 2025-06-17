@@ -22,7 +22,7 @@ const MyItem = () => {
     }
     return (
         <div className='my-10 max-w-11/12 mx-auto'>
-            <h2 className="text-5xl text-[#F4B400] mb-4 text-center">My Items</h2>
+            <h2 className="text-5xl text-[#2C7BE5] mb-4 text-center">My Items</h2>
 
             {items.length < 1 ?
                 (<>
