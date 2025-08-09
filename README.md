@@ -8,7 +8,7 @@
 A modern and user-friendly platform to report, browse, and recover lost items. Users can post items they have lost or found, and view recoveries made by others — making it easier to reconnect people with their lost belongings.
 
 ## Screenshot  
-![Tourism Website Screenshot](https://link-to-screenshot.com/tourism.png)
+![Tourism Website Screenshot]([https://link-to-screenshot.com/tourism.png](https://i.ibb.co.com/tMQzDrYj/Screenshot-2025-08-09-120330.png))
 
 ## Technologies Used  
 - React  
@@ -35,8 +35,8 @@ A modern and user-friendly platform to report, browse, and recover lost items. U
 
 ## Setup & Installation  
 ```bash
-git clone 
-cd 
+git clone https://github.com/SheikhSalman-koli/assignment11-lost-found-client-side.git
+cd project name
 npm install
 npm start
 
