@@ -36,9 +36,9 @@ A modern and user-friendly platform to report, browse, and recover lost items. U
 ## Setup & Installation  
 ```bash
 git clone https://github.com/SheikhSalman-koli/assignment11-lost-found-client-side.git
-cd project name
+cd your project name
 npm install
-npm start
+npm run dev
 
 
 
