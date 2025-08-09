@@ -8,7 +8,7 @@
 A modern and user-friendly platform to report, browse, and recover lost items. Users can post items they have lost or found, and view recoveries made by others — making it easier to reconnect people with their lost belongings.
 
 ## Screenshot  
-![Tourism Website Screenshot](https://i.ibb.co.com/tMQzDrYj/Screenshot-2025-08-09-120330.png)
+![lost and found Website Screenshot](https://i.ibb.co.com/tMQzDrYj/Screenshot-2025-08-09-120330.png)
 
 ## Technologies Used  
 - React  
