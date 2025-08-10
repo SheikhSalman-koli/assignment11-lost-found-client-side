@@ -10,7 +10,7 @@ const Extra1 = () => {
     <div className="w-full bg-[#e8f4f8] p-8 max-w-11/12 mx-auto">
       <h2 className="text-3xl font-bold mb-6 text-center">Lost & Found Safety Tips</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-12">
-       
+        
         <motion.div whileHover = {{ scale: 1.1 }}  whileTap = {{ scale: 0.8 }} className="p-4 bg-blue-100 rounded-lg">✅ Verify ownership before returning items.</motion.div>
         <motion.div whileHover = {{ scale: 1.1 }}  whileTap = {{ scale: 0.8 }} className="p-4 bg-blue-100 rounded-lg">✅ Avoid sharing personal information publicly.</motion.div>
         <motion.div whileHover = {{ scale: 1.1 }}  whileTap = {{ scale: 0.8 }} className="p-4 bg-blue-100 rounded-lg">✅ Report valuable items to local authorities.</motion.div>

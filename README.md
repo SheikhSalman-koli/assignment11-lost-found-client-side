@@ -1,31 +1,44 @@
-# 🔎 Lost-Found-Platform 
 
-A modern and user-friendly platform to report, browse, and recover lost items. Users can post items they have lost or found, and view recoveries made by others — making it easier to reconnect people with their lost belongings.
+## 🔎 Lost-Found-Platform
 
 ## 🌐 Live URL
-
 [👉 https://lost-found-platform-813af.web.app](https://lost-found-platform-813af.web.app/)
 
-## 🎯 Purpose
+## Overview  
+A modern and user-friendly platform to report, browse, and recover lost items. Users can post items they have lost or found, and view recoveries made by others — making it easier to reconnect people with their lost belongings.
 
-The goal of this application is to help people report and retrieve lost and found items in a centralized, organized way. It's ideal for campuses, neighborhoods, cities, or organizations where lost item reporting is common.
+## Screenshot  
+![lost and found Website Screenshot](https://i.ibb.co.com/tMQzDrYj/Screenshot-2025-08-09-120330.png)
 
-## 🚀 Key Features
+## Technologies Used  
+- React  
+- Tailwind CSS  
+- Node.js  
+- Express  
+- MongoDB
 
+## Core Features  
 - 📝 Submit lost or found items with image, location, description, and few more information
 - 🧭 Filter and search through title and location
 - 🔄 Toggle between **card** and **table** views in the recovered items section
 - 📦 Categorized item listings (e.g., gadgets, pets, documents)
 - 🔐 Private route protection for authenticated users
 
-## 📦 NPM Packages Used
-
+## Dependencies  
 - `react-router-dom`
 - `axios` 
 - `react-icons`
 - `@splidejs/react-splide` 
 - `react-toastify`
 - `react-tooltip`
-- `sweetalert2`
+- `sweetalert2`  
+
+## Setup & Installation  
+```bash
+git clone https://github.com/SheikhSalman-koli/assignment11-lost-found-client-side.git
+cd your project name
+npm install
+npm run dev
+
 
 
