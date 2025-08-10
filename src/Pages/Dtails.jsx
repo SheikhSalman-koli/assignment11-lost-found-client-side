@@ -55,7 +55,7 @@ const Dtails = () => {
             confirmButtonText: "Yes, recover it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.post(`https://lost-found-server-two.vercel.app/recovered/${data._id}`, allData)
+                axios.post(`http://localhost:3000/recovered/${data._id}`, allData)
                     .then(res => {
                         // console.log(res.data);
                         if (res.data.insertedId){

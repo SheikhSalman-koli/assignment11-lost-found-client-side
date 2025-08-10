@@ -14,7 +14,7 @@ const LatestItems = () => {
     // console.log(latest);
     useEffect(() => {
         setLoader(true)
-        axios('https://lost-found-server-two.vercel.app/latest')
+        axios('http://localhost:3000/latest')
             .then(res => {
                 setLatest(res.data)
                 setLoader(false)
@@ -24,16 +24,16 @@ const LatestItems = () => {
     }, [])
 
     return (
-        <div className='space-y-5  max-w-11/12 mx-auto'>
+        <div className='space-y-5  max-w-11/12 mx-auto '>
             <h1 className="text-3xl lg:text-7xl text-center text-[#2C7BE5]">Latest Lost & Found Items</h1>
             {
                 loader ? (<Spinner></Spinner>)
                     :
-                    (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                    (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                         {
                             latest?.map(item => <div
                                 key={item._id}
-                                className="card bg-base-100  border-2 border-[#2C7BE5] shadow-sm"
+                                className="card bg-base-100  border-1 border-gray-300 shadow-sm"
                             >
                                 <figure>
                                     <img className='h-[200px] w-full'
@@ -41,16 +41,11 @@ const LatestItems = () => {
                                         alt="Shoes" />
                                 </figure>
                                 <div className="card-body">
-                                    <h2 className="text-3xl font-bold mb-3">{item.title}</h2>
-                                    {/* Location */}
-                                    <p className="text-md mb-2">
-                                        <strong>Location:</strong> {item.location}
-                                    </p>
-
-                                    {/* Date */}
-                                    <p className="text-md mb-2">
-                                        <strong>Date:</strong> {item.date}
-                                    </p>
+                                    <h2 className="font-bold mb-3">{item.title}</h2>
+                                      <p>
+                                        {item?.description?.split(" ").slice(0,20).join(" ")}
+                                         {item?.description?.split(" ").length > 20 && "..."}
+                                        </p>
                                     <div className="card-actions justify-end">
                                         <Link to={`/details/${item._id}`}> <button className="btn bg-[#28A745] text-white hover:rounded-4xl"><FcViewDetails /> Details</button></Link>
                                     </div>
@@ -59,7 +54,7 @@ const LatestItems = () => {
                         }
                     </div>)
             }
-            <Link to='/allitem' className='btn bg-[#28A745] w-full text-white hover:rounded-4xl'>See All <FaArrowRightLong /></Link>
+             <Link to='/allitem' className='btn bg-[#28A745] w-full text-white hover:rounded-4xl px-0'>See All <FaArrowRightLong /></Link>
         </div>
     );
 };

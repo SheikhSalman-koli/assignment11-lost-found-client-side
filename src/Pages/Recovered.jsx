@@ -17,7 +17,7 @@ const Recovered = () => {
 
     useEffect(() => {
         setLoader(true)
-        axios(`https://lost-found-server-two.vercel.app/recovered/${email}`)
+        axios(`http://localhost:3000/recovered/${email}`)
             .then(res => {
                 setRecovereds(res?.data)
                 setLoader(false)

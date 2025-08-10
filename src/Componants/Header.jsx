@@ -46,7 +46,7 @@ const Header = () => {
                               {user && isUser}
                         </ul>
                     </div>
-                    <img className='hidden lg:block w-10 h-10 rounded-full border-2 border-[#2C7BE5]' src={logo} alt="empty for now" />
+                    <img className='hidden lg:block w-10 h-10 rounded-full border-2 border-white' src={logo} alt="empty for now" />
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
@@ -66,7 +66,7 @@ const Header = () => {
                                 
                                 <div className="dropdown">
                                     <div tabIndex={0} role="button" className="">
-                                        <img className='w-10 h-10 rounded-full' src={user?.photoURL} alt="" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} />
+                                        <img className='w-10 h-10 rounded-full border-2 border-white' src={user?.photoURL} alt="" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} />
                                         <Tooltip id="my-tooltip" />
                                     </div>
                                     <ul

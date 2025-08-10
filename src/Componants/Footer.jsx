@@ -6,7 +6,7 @@ import logo from '../assets/lostfound-logo.jpg'
 const Footer = () => {
 
     return (
-        <div className='mt-6'>
+        <div className=''>
             <footer className="footer sm:footer-horizontal bg-[#2C7BE5] text-white p-10">
                 <nav>
                     <div className='flex gap-2 items-center'>

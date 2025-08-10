@@ -26,7 +26,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div className="w-full bg-[#f0f4f8] py-12  max-w-11/12 mx-auto">
+    <div className="w-full bg-base-100 py-12 max-w-11/12 mx-auto">
       <div className="max-w-6xl mx-auto px-4 lg:px-8">
         <h2 className="text-3xl font-bold mb-10 text-[#1b3a4b] text-center">🛠️ How It Works</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
