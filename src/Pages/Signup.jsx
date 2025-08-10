@@ -61,21 +61,21 @@ const Signup = () => {
     }
 
 
-    // const signWithGoogle = () => {
-    //     googleSign()
-    //         .then(result => {
-    //             const usser = result.user
-    //             setUser(usser)
-    //             Swal.fire('logged in successfully')
-    //             navigate('/')
-    //         })
-    //         .catch((error) => {
-    //             toast.error(error.message)
-    //         })
-    // }
+    const signWithGoogle = () => {
+        googleSign()
+            .then(result => {
+                const usser = result.user
+                setUser(usser)
+                Swal.fire('logged in successfully')
+                navigate('/')
+            })
+            .catch((error) => {
+                toast.error(error.message)
+            })
+    }
 
     return (
-        <div className='my-5'>
+        <div className='my-5 pt-16'>
             <div className="card bg-base-100 w-full max-w-sm mx-auto mt-10 shrink-0 border-2 border-[#2C7BE5] font-light">
                 <div className="card-body">
                     <h2 className='text-2xl font-bold'>Create an acount</h2>
@@ -103,7 +103,7 @@ const Signup = () => {
                     </form>
                 </div>
             </div>
-{/* 
+
             <div className='max-w-sm mx-auto text-center  mt-4'>
                 <div className="divider divider-default">or</div>
                 <div className='flex flex-col space-y-3 '>
@@ -113,7 +113,7 @@ const Signup = () => {
                     </button>
 
                 </div>
-            </div> */}
+            </div>
 
         </div>
     );

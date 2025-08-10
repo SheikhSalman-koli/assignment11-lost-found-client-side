@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 const Dtails = () => {
 
     const  item  = useLoaderData()
-    const [data, setData] = useState(item.data)
+    const [data, setData] = useState(item?.data)
 
     // console.log(data);
     useEffect(() => {
@@ -75,49 +75,49 @@ const Dtails = () => {
     }
 
     return (
-        <div>
+        <div className='pt-16'>
             <div className="max-w-3xl mx-auto bg-white p-6 my-10 rounded-xl shadow-lg">
                 {/* Thumbnail */}
                 <img
-                    src={data.thumbnail}
-                    alt={data.title}
+                    src={data?.thumbnail}
+                    alt={data?.title}
                     className="w-full h-80 object-cover rounded-lg mb-5 border"
                 />
                 {/* Title */}
-                <h2 className="text-3xl font-bold mb-3">{data.title}</h2>
+                <h2 className="text-3xl font-bold mb-3">{data?.title}</h2>
 
                 {/* Post Type & Category */}
                 <div className="flex gap-3 mb-4">
                     <span className="px-4 py-1 rounded-full bg-blue-100 text-blue-700 font-semibold">
-                        {data.type}
+                        {data?.type}
                     </span>
                     <span className="px-4 py-1 rounded-full bg-green-100 text-green-700 font-semibold">
-                        {data.category}
+                        {data?.category}
                     </span>
                 </div>
 
                 {/* Description */}
-                <p className="text-lg text-gray-700 mb-5">{data.description}</p>
+                <p className="text-lg text-gray-700 mb-5">{data?.description}</p>
 
                 {/* Location */}
                 <p className="text-md mb-2">
-                    <strong>Location:</strong> {data.location}
+                    <strong>Location:</strong> {data?.location}
                 </p>
 
                 {/* Date */}
                 <p className="text-md mb-2">
-                    <strong>Date:</strong> {data.date}
+                    <strong>Date:</strong> {data?.date}
                 </p>
 
                 {/* Contact Information */}
                 <div className="mt-5 p-4 border border-gray-300 rounded-lg bg-gray-50">
                     <h3 className="text-lg font-semibold mb-2">Contact Information:</h3>
-                    <p><strong>Name:</strong> {data.name}</p>
-                    <p><strong>Email:</strong> {data.email}</p>
+                    <p><strong>Name:</strong> {data?.name}</p>
+                    <p><strong>Email:</strong> {data?.email}</p>
                 </div>
                 <div className="card-actions justify-end mt-4">
 
-                    <button onClick={handleModal} className="btn bg-[#28A745] hover:rounded-4xl text-white">{data.type === 'Lost' ? 'Found This!' : 'This is mine'}</button>
+                    <button onClick={handleModal} className="btn bg-[#28A745] hover:rounded-4xl text-white">{data?.type === 'Lost' ? 'Found This!' : 'This is mine'}</button>
 
                     {
                         openmodal &&
@@ -134,7 +134,7 @@ const Dtails = () => {
                                 <form onSubmit={handleSubmit}>
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Post Type</legend>
-                                        <select className="input w-full" defaultValue={data.type} name="type" id="day" required readOnly>
+                                        <select className="input w-full" defaultValue={data?.type} name="type" id="day" required readOnly>
                                             <option disabled={true}>Select A Type</option>
                                             <option value="Lost">Lost</option>
                                             <option value="Found">Found</option>
@@ -143,22 +143,22 @@ const Dtails = () => {
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Thumbnail (Image URL)</legend>
-                                        <input type="text" name='thumbnail' defaultValue={data.thumbnail} className="input w-full " placeholder="Thumbnail (Image URL)" required readOnly />
+                                        <input type="text" name='thumbnail' defaultValue={data?.thumbnail} className="input w-full " placeholder="Thumbnail (Image URL)" required readOnly />
                                     </fieldset>
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Title</legend>
-                                        <input type="text" name='title' defaultValue={data.title} className="input w-full " required placeholder="Title" readOnly />
+                                        <input type="text" name='title' defaultValue={data?.title} className="input w-full " required placeholder="Title" readOnly />
                                     </fieldset>
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Description</legend>
-                                        <input type="text" name='description' defaultValue={data.description} className="input w-full " required placeholder="Description" readOnly />
+                                        <input type="text" name='description' defaultValue={data?.description} className="input w-full " required placeholder="Description" readOnly />
                                     </fieldset>
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Category</legend>
-                                        <select className="input w-full" defaultValue={data.category} name="category" id="day" required readOnly>
+                                        <select className="input w-full" defaultValue={data?.category} name="category" id="day" required readOnly>
                                             <option disabled={true}>Select A Category</option>
                                             <option value="Human">Human</option>
                                             <option value="Gadgets">Gadgets</option>
@@ -169,14 +169,14 @@ const Dtails = () => {
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Location</legend>
-                                        <input type="text" name='location' defaultValue={data.location} className="input w-full " required placeholder="Location" readOnly />
+                                        <input type="text" name='location' defaultValue={data?.location} className="input w-full " required placeholder="Location" readOnly />
                                     </fieldset>
 
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Date</legend>
                                         <input type="date"
                                             name='date'
-                                            defaultValue={data.date}
+                                            defaultValue={data?.date}
                                             className="input w-full "
                                             required placeholder="RecoveredDate" readOnly />
                                     </fieldset>
@@ -210,12 +210,12 @@ const Dtails = () => {
 
                                     <button
                                         type='submit'
-                                        disabled={data.status === "recovered"}
+                                        disabled={data?.status === "recovered"}
                                         className={`btn bg-[#28A745] hover:rounded-4xl text-white mt-3
-                                        ${data.status === "recovered" ? "cursor-not-allowed" : ""}
+                                        ${data?.status === "recovered" ? "cursor-not-allowed" : ""}
                                         `}
                                     >
-                                        {data.status === "recovered" ? "Already Recovered" : "Mark as Recovered"}
+                                        {data?.status === "recovered" ? "Already Recovered" : "Mark as Recovered"}
                                     </button>
                                 </form>
                             </div>

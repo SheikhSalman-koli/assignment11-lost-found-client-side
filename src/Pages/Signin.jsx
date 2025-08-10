@@ -71,7 +71,7 @@ const Signin = () => {
 
     return (
         <div>
-            <div className='my-5'>
+            <div className='my-5 pt-16'>
                 <div className="card bg-base-100 w-full max-w-sm mx-auto mt-10 shrink-0 border-2 border-[#2C7BE5] font-light">
                     <div className="card-body">
                         <h2 className='text-2xl font-bold'>Login</h2>

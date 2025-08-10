@@ -34,7 +34,7 @@ const AddItem = () => {
         axios.post('https://lost-found-server-two.vercel.app/additem',data)
         .then(res=>{
             // console.log(res.data);
-            if(res.data.insertedId){
+            if(res?.data?.insertedId){
                 toast.success('An Item Added Successfully!')
             }
         }) 
@@ -45,7 +45,7 @@ const AddItem = () => {
 
 
     return (
-        <div className='mb-10 max-w-11/12 mx-auto'>
+        <div className='mb-10 max-w-11/12 mx-auto pt-16'>
             <div className='p-12 text-center space-y-4'>
                 <h1 className="text-6xl text-[#2C7BE5]">Add Item</h1>
             </div>

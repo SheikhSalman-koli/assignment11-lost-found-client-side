@@ -25,7 +25,7 @@ const LatestItems = () => {
 
     return (
         <div className='space-y-5  max-w-11/12 mx-auto'>
-            <h1 className="text-3xl lg:text-7xl text-center text-[#2C7BE5]">Latest Found & Lost Items</h1>
+            <h1 className="text-3xl lg:text-7xl text-center text-[#2C7BE5]">Latest Lost & Found Items</h1>
             {
                 loader ? (<Spinner></Spinner>)
                     :

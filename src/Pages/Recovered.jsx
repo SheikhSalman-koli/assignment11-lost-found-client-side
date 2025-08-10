@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData, useParams } from 'react-router';
 import RecoveredCard from '../Componants/RecoveredCard';
 import RecoveredTable from '../Componants/RecoveredTable';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import Spinner from '../Componants/Spinner';
 
 const Recovered = () => {
 
-    const data = useLoaderData()
-    const recovereds = data.data
+    // const data = useLoaderData()
+    // const recovereds = data.data
     // console.log(recovereds);
+    const { email } = useParams()
+    const [loader, setLoader] = useState(false)
+    const [recovereds, setRecovereds] = useState()
+
+    useEffect(() => {
+        setLoader(true)
+        axios(`https://lost-found-server-two.vercel.app/recovered/${email}`)
+            .then(res => {
+                setRecovereds(res?.data)
+                setLoader(false)
+            }).catch(error => {
+                toast.error(error?.message)
+            })
+    }, [email])
+
+    // console.log(recovereds);
+
     const [layout, setLayout] = useState('card')
 
     const handleLayout = () => {
@@ -15,15 +35,16 @@ const Recovered = () => {
     }
 
     return (
-        <div className='my-10 max-w-11/12 mx-auto'>
+        <div className='my-10 max-w-11/12 mx-auto pt-16'>
             <h2 className="text-5xl text-[#2C7BE5] mb-4 text-center">Recovered Items</h2>
             {
-                recovereds.length < 1 ?
+                recovereds?.length < 1 ?
                     (<div className='text-center space-y-8'>
                         <h1 className='text-4xl lg:text-8xl px-0 lg:px-40 text-red-500 text-center'>You haven’t recovered any item yet!</h1>
                     </div>)
                     :
-
+                    loader ? <Spinner></Spinner>
+                    :
                     <div>
                         <div className='flex justify-end mb-4'>
                             <button
@@ -33,12 +54,14 @@ const Recovered = () => {
                                 {layout === "card" ? "Switch to Table View" : "Switch to Card View"}
                             </button>
                         </div>
+
+                        
                         {
                             layout === 'card' ?
                                 (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                                     {
-                                        recovereds.map(item => <RecoveredCard
-                                            key={item._id}
+                                        recovereds?.map(item => <RecoveredCard
+                                            key={item?._id}
                                             item={item}
                                         ></RecoveredCard>)
                                     }
@@ -61,8 +84,8 @@ const Recovered = () => {
                                             <tbody>
 
                                                 {
-                                                    recovereds.map((recovered, index) => <RecoveredTable
-                                                        key={recovered._id}
+                                                    recovereds?.map((recovered, index) => <RecoveredTable
+                                                        key={recovered?._id}
                                                         recovered={recovered}
                                                         index={index}
                                                     ></RecoveredTable>)

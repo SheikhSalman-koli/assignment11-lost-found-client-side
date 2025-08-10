@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 const Extra2 = () => {
   return (
-    <div className="w-full bg-[#fff9ec] p-4 lg:p-8  max-w-11/12 mx-auto">
-      <h2 className="text-3xl font-bold mb-6">Success Stories</h2>
+    <div className="w-full bg-[#fff9ec] p-8  max-w-11/12 mx-auto">
+      <h2 className="text-3xl font-bold mb-6 text-center">Success Stories</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         <motion.div whileHover = {{ scale: 1.1 }}  whileTap = {{ scale: 0.8 }} className="p-6 bg-yellow-100 rounded-lg shadow">
           👜 "I found my wallet in 2 days using this platform!" — Fatima

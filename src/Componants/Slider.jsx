@@ -9,7 +9,7 @@ import '@splidejs/react-splide/css';
 
 const Slider = () => {
     return (
-        <div className='my-10'>
+        <div className=''>
             <Splide
                 options={{
                     type: 'loop',
@@ -28,7 +28,7 @@ const Slider = () => {
                   <SplideSlide >
                     <div className='relative'>
                         <img className=' w-full h-[250px] lg:h-[450px] ' src={lost2} alt="Image 1" />
-                    <h2 className='top-8 lg:top-20 left-8 text-5xl absolute '>found a cat</h2>
+                    <h2 className='top-8 lg:top-20 left-8 text-5xl absolute text-white'>found a cat</h2>
                     </div>
                 </SplideSlide>
                  <SplideSlide >
