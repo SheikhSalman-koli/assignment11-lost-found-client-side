@@ -81,10 +81,10 @@ const Header = () => {
                             </div>
                         </>
                             :
-                            <>
+                            <div className='space-x-3'>
                                 <NavLink to='/signin' className='btn btn-outline'>Login</NavLink>
                                 <NavLink to='/signup' className='btn btn-outline'>Register</NavLink>
-                            </>
+                            </div>
                     }
                 </div>
             </div>

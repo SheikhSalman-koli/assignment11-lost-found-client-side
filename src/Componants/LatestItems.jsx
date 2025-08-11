@@ -33,14 +33,14 @@ const LatestItems = () => {
                         {
                             latest?.map(item => <div
                                 key={item._id}
-                                className="card bg-base-100  border-1 border-gray-300 shadow-sm"
+                                className="card bg-white shadow-md rounded-2xl overflow-hidden p-4 space-y-3"
                             >
                                 <figure>
-                                    <img className='h-[200px] w-full'
+                                    <img className='w-full h-48 object-cover rounded-xl border-1 border-gray-300'
                                         src={item.thumbnail}
                                         alt="Shoes" />
                                 </figure>
-                                <div className="card-body">
+                                <div className="card-body p-0">
                                     <h2 className="font-bold mb-3">{item.title}</h2>
                                       <p>
                                         {item?.description?.split(" ").slice(0,20).join(" ")}

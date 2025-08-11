@@ -65,7 +65,7 @@ const AllItem = () => {
         <div className='my-10 max-w-11/12 mx-auto pt-16'>
             <h2 className="text-6xl text-center text-[#2C7BE5] mb-4">All Item</h2>
 
-            <div className='mb-10'>
+            <div className='mb-10 flex flex-col lg:flex-row lg:justify-between gap-3'>
                 <label className="input">
                     <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g
@@ -108,13 +108,13 @@ const AllItem = () => {
                     :
                     (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                         {
-                            items?.map(item => <div key={item?._id} className="card bg-base-100  border-2 border-[#2C7BE5] shadow-sm">
+                            items?.map(item => <div key={item?._id} className="card bg-white shadow-md rounded-2xl overflow-hidden p-4 space-y-3">
                                 <figure>
-                                    <img className='h-[200px] w-full'
+                                    <img className='w-full h-48 object-cover rounded-xl border-1 border-gray-300'
                                         src={item?.thumbnail}
                                         alt="Shoes" />
                                 </figure>
-                                <div className="card-body">
+                                <div className="card-body p-0">
                                     <h2 className="font-bold">{item?.title}</h2>
                                     <p>
                                         {item?.description?.split(" ").slice(0, 20).join(" ")}

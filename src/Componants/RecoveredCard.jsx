@@ -6,7 +6,7 @@ const RecoveredCard = ({item}) => {
             <img
                 src={item?.thumbnail}
                 alt={item?.title}
-                className="w-full h-48 object-cover rounded-xl"
+                className="w-full h-48 object-cover rounded-xl border-1 border-gray-300"
             />
 
             <h2 className="text-lg font-semibold text-gray-800">{item?.title}</h2>
