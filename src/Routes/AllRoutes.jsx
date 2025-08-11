@@ -13,6 +13,7 @@ import NotFound from "../Pages/NotFound";
 import Recovered from "../Pages/Recovered";
 import Spinner from "../Componants/Spinner";
 import Blogs from "../Pages/Blogs";
+import FAQs from "../Pages/FAQs";
 
 export const routes = createBrowserRouter([
     {
@@ -24,7 +25,7 @@ export const routes = createBrowserRouter([
                 Component: Home
             },
             {
-                path: 'additem',
+                path: 'reportitem',
                 element: <PrivateRoute>
                     <AddItem></AddItem>
                 </PrivateRoute>
@@ -68,6 +69,10 @@ export const routes = createBrowserRouter([
             {
                 path: 'blogs',
                 Component : Blogs
+            },
+            {
+                path : 'faqs',
+                Component: FAQs
             }
 
         ]

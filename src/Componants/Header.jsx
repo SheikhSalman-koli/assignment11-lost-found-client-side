@@ -36,7 +36,7 @@ const Header = () => {
     }
 
     const isUser = <>
-        <li><NavLink to='/additem'>Add Item</NavLink></li>
+        <li><NavLink to='/reportitem'>Report Item</NavLink></li>
         <li> <NavLink to={`/myitem/${user?.email}`}>My-Item</NavLink></li>
         <li> <NavLink to={`/recovered/${user?.email}`}>Recovered</NavLink></li>
     </>

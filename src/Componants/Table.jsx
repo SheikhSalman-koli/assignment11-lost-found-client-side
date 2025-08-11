@@ -116,7 +116,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
                 {
                     openmodal &&
                     (<div id="my_modal_5" className="fixed w-auto lg:w-full h-full grid place-items-center z-50 bg-[#0006] top-0 bottom-0 left-0 right-0 overflow-scroll">
-                        <div className={`p-5 bg-white rounded-lg min-w-[400px]  bg-[url(../assets/hero_img.jpg)] space-y-2`}>
+                        <div className={`p-5 bg-base-100 rounded-lg min-w-[400px]  bg-[url(../assets/hero_img.jpg)] space-y-2`}>
 
                             <div className='flex justify-between'>
                                 <h3 className="text-2xl">Update Item</h3>
@@ -129,7 +129,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
                                 <fieldset className="fieldset">
                                     <legend className="fieldset-legend">Post Type</legend>
                                     <select className="input w-full" defaultValue={item.type} name="type" id="day" required>
-                                        <option disabled={true}>Select A Type</option>
+                                        <option value='' disabled>Select A Type</option>
                                         <option value="Lost">Lost</option>
                                         <option value="Found">Found</option>
                                     </select>
