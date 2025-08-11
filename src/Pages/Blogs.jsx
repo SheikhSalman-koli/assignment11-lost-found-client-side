@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Blogs() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -8,7 +9,7 @@ export default function Blogs() {
     fetch("/blogPost.json")
       .then((res) => res.json())
       .then((data) => setBlogPosts(data))
-      .catch((err) => console.error("Error loading blog posts:", err));
+      .catch((err) => toast.error(err));
   }, []);
 
   const togglePost = (id) => {
@@ -30,7 +31,7 @@ export default function Blogs() {
               <p className="text-gray-500 text-sm mb-4">
                 {post?.date} • By {post?.author}
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="mb-4">
                 {isExpanded
                   ? post?.content
                   : post?.content.slice(0, 250) + "..."}

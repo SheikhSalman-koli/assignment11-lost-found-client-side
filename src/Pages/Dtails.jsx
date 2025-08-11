@@ -76,7 +76,7 @@ const Dtails = () => {
 
     return (
         <div className='pt-16'>
-            <div className="max-w-3xl mx-auto bg-white p-6 my-10 rounded-xl shadow-lg">
+            <div className="max-w-3xl mx-auto bg-base-100 p-6 my-10 rounded-xl shadow-lg">
                 {/* Thumbnail */}
                 <img
                     src={data?.thumbnail}
@@ -97,7 +97,7 @@ const Dtails = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-lg text-gray-700 mb-5">{data?.description}</p>
+                <p className="text-lg text-gray-500 mb-5">{data?.description}</p>
 
                 {/* Location */}
                 <p className="text-md mb-2">
@@ -110,7 +110,7 @@ const Dtails = () => {
                 </p>
 
                 {/* Contact Information */}
-                <div className="mt-5 p-4 border border-gray-300 rounded-lg bg-gray-50">
+                <div className="mt-5 p-4 border border-gray-300 rounded-lg bg-base-200">
                     <h3 className="text-lg font-semibold mb-2">Contact Information:</h3>
                     <p><strong>Name:</strong> {data?.name}</p>
                     <p><strong>Email:</strong> {data?.email}</p>
@@ -122,7 +122,7 @@ const Dtails = () => {
                     {
                         openmodal &&
                         (<div id="my_modal_5" className="fixed w-auto lg:w-full h-full grid place-items-center z-50 bg-[#0006] top-0 bottom-0 left-0 right-0 overflow-scroll">
-                            <div className={`p-5 bg-white rounded-lg min-w-[400px]  bg-[url(../assets/hero_img.jpg)] space-y-4`}>
+                            <div className={`p-5 bg-base-300 rounded-lg min-w-[400px]  bg-[url(../assets/hero_img.jpg)] space-y-4`}>
 
                                 <div className='flex justify-between'>
                                     <h3 className="text-2xl">Recover form</h3>

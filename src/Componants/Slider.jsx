@@ -9,7 +9,7 @@ import '@splidejs/react-splide/css';
 
 const Slider = () => {
     return (
-        <div className=''>
+        <div className='border-t-10 border-base-100'>
             <Splide
                 options={{
                     type: 'loop',

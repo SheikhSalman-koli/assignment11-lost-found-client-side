@@ -10,7 +10,7 @@ const Footer = () => {
             <footer className="footer sm:footer-horizontal bg-[#2C7BE5] text-white p-10">
                 <nav>
                     <div className='flex gap-2 items-center'>
-                        <img className='w-10 h-10 rounded-full border-2 border-[#F4B400]' src={logo} alt="empty for now" />
+                        <img className='w-10 h-10 rounded-full border-2 border-white' src={logo} alt="empty for now" />
                         <p className="text-2xl font-bold">Lost & Found Hub</p>
                     </div>
                     <p className="">Helping you reunite with what matters most.</p>

@@ -19,6 +19,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
         document.getElementById('my_modal_5')
         setOpenmodal(true)
     }
+
     const closeModal = () => {
         setOpenmodal(false)
     }
@@ -48,6 +49,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
                         icon: "success"
                     });
                    onUpdate(item._id, updated)
+                   setOpenmodal(false)
                 }
                 
                 // console.log(res.data);

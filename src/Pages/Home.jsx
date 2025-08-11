@@ -13,7 +13,7 @@ const Home = () => {
         },[]);
     
     return (
-        <div className='space-y-15 py-16 bg-gray-50'>
+        <div className='space-y-15 py-16'>
             <Slider></Slider>
             <LatestItems></LatestItems>
             <Extra1></Extra1>

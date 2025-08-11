@@ -108,7 +108,7 @@ const AllItem = () => {
                     :
                     (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                         {
-                            items?.map(item => <div key={item?._id} className="card bg-white shadow-md rounded-2xl overflow-hidden p-4 space-y-3">
+                            items?.map(item => <div key={item?._id} className="card bg-base-100 shadow-md rounded-2xl overflow-hidden p-4 space-y-3">
                                 <figure>
                                     <img className='w-full h-48 object-cover rounded-xl border-1 border-gray-300'
                                         src={item?.thumbnail}

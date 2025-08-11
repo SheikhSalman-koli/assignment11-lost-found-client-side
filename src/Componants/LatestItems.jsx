@@ -33,7 +33,7 @@ const LatestItems = () => {
                         {
                             latest?.map(item => <div
                                 key={item._id}
-                                className="card bg-white shadow-md rounded-2xl overflow-hidden p-4 space-y-3"
+                                className="card bg-base-100 shadow-md rounded-2xl overflow-hidden p-4 space-y-3"
                             >
                                 <figure>
                                     <img className='w-full h-48 object-cover rounded-xl border-1 border-gray-300'

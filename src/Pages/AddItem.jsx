@@ -19,70 +19,74 @@ const AddItem = () => {
         ),
     );
 
-     useEffect(() => {
-            document.title = "Add Item";
-        },[]);
+    useEffect(() => {
+        document.title = "Add Item";
+    }, []);
 
-    const handleAdd =(e)=>{
+    const handleAdd = (e) => {
         e.preventDefault()
         const form = e.target
         const formData = new FormData(form)
         const newItem = Object.fromEntries(formData.entries())
-        const data = {...newItem, date:formated}
+        const data = { ...newItem, date: formated }
         // console.log(data);
 
-        axios.post('http://localhost:3000/additem',data)
-        .then(res=>{
-            // console.log(res.data);
-            if(res?.data?.insertedId){
-                toast.success('An Item Added Successfully!')
-            }
-        }) 
-        .catch(error=>{
-            toast.error(error.message)
-        })
+        axios.post('http://localhost:3000/additem', data)
+            .then(res => {
+                // console.log(res.data);
+                if (res?.data?.insertedId) {
+                    toast.success('An Item Added Successfully!')
+                }
+            })
+            .catch(error => {
+                toast.error(error.message)
+            })
     }
 
 
     return (
         <div className='mb-10 max-w-11/12 mx-auto pt-16'>
             <div className='p-12 text-center space-y-4'>
-                <h1 className="text-6xl text-[#2C7BE5]">Add Item</h1>
+                <h1 className="text-3xl lg:text-6xl text-[#2C7BE5]">Report Lost Or Found Item</h1>
             </div>
             <form onSubmit={handleAdd} onKeyDown={(e) => e.key === 'Enter' && e.preventDefault()}>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                     {/* Post type */}
-                    <fieldset className="fieldset  border-2 border-[#2C7BE5] rounded-box p-4">
-                        <label className="label font-bold text-black text-[18px]">Post Type</label>
-                        <select className="input w-full " name="type" id="day" required>
-                            <option disabled={true}>Select A Type</option>
+                    <fieldset className="fieldset  border-1 border-gray-300 rounded-box p-4">
+                        <label className="label font-bold  text-[18px]">Report Type</label>
+                        <select className="input w-full " name="type" id="day" required defaultValue="">
+                            <option value="" disabled>Select A Type</option>
                             <option value="Lost">Lost</option>
                             <option value="Found">Found</option>
                         </select>
                     </fieldset>
                     {/* Thumbnail*/}
-                    <fieldset className="fieldset border-2 border-[#2C7BE5] rounded-box p-4">
-                        <label className="label font-bold text-black text-[18px]">Thumbnail (Image URL)</label>
+                    <fieldset className="fieldset border-1 border-gray-300 rounded-box p-4">
+                        <label className="label font-bold  text-[18px]">Thumbnail (Image URL)</label>
                         <input type="text" name='thumbnail' className="input w-full " placeholder="Thumbnail (Image URL)" required />
                     </fieldset>
 
                     {/* title*/}
-                    <fieldset className="fieldset  border-2 border-[#2C7BE5] rounded-box p-4">
-                        <label className="label font-bold text-black text-[18px]">Title</label>
+                    <fieldset className="fieldset  border-1 border-gray-300 rounded-box p-4">
+                        <label className="label font-bold  text-[18px]">Title</label>
                         <input type="text" name='title' className="input w-full " required placeholder="Title" />
                     </fieldset>
 
                     {/*  Description*/}
-                    <fieldset className="fieldset  border-2 border-[#2C7BE5] rounded-box p-4">
-                        <label className="label font-bold text-black text-[18px]">Description</label>
+                    <fieldset className="fieldset  border-1 border-gray-300 rounded-box p-4">
+                        <label className="label font-bold  text-[18px]">Description</label>
                         <input type="text" name='description' className="input w-full " required placeholder="Description" />
                     </fieldset>
 
                     {/* Category */}
-                    <fieldset className="fieldset border-2 border-[#2C7BE5] rounded-box p-4">
-                        <label className="label font-bold text-black text-[18px]">Category</label>
-                        <select className="input w-full " name="category" id="day" required>
-                            <option disabled={true}>Select A Category</option>
+                    <fieldset className="fieldset border-1 border-gray-300 rounded-box p-4">
+                        <label className="label font-bold text-[18px]">Category</label>
+                        <select
+                            className="input w-full" name="category" id="day" required defaultValue=""
+                        >
+                            <option value="" disabled>
+                                Select A Category
+                            </option>
                             <option value="Human">Human</option>
                             <option value="Gadgets">Gadgets</option>
                             <option value="Pets">Pets</option>
@@ -90,31 +94,31 @@ const AddItem = () => {
                         </select>
                     </fieldset>
                     {/* location */}
-                    <fieldset className="fieldset   border-2 border-[#2C7BE5] rounded-box p-4">
-                        <label className="label font-bold text-black text-[18px]">Location</label>
+                    <fieldset className="fieldset   border-1 border-gray-300 rounded-box p-4">
+                        <label className="label font-bold  text-[18px]">Location</label>
                         <input type="text" name='location' className="input w-full " required placeholder="Location" />
                     </fieldset>
                     {/*  Date */}
-                    <fieldset className="fieldset  border-2 border-[#2C7BE5] rounded-box p-4">
-                        <label className="label font-bold text-black text-[18px]">Date</label>
+                    <fieldset className="fieldset  border-1 border-gray-300 rounded-box p-4">
+                        <label className="label font-bold  text-[18px]">Date</label>
                         <DatePicker
                             selected={selectedDate}
                             onChange={(date) => setSelectedDate(date)}
                             customInput={<ExampleCustomInput className="input w-full" />}
                         />
-                         <input type="text" name='status' className="input w-full " required placeholder="status" />
+                        <input type="text" name='status' className="input w-full " required placeholder="status" />
                     </fieldset>
 
                     {/* Contact Information   */}
-                    <fieldset className="fieldset  border-2 border-[#2C7BE5] rounded-box p-4">
-                        <label className="label font-bold text-black text-[18px]">Contact Information</label>
+                    <fieldset className="fieldset  border-1 border-gray-300 rounded-box p-4">
+                        <label className="label font-bold  text-[18px]">Contact Information</label>
                         {
                             isLoading ?
                                 (<span className="loading loading-bars loading-lg"></span>)
                                 :
                                 <>
-                                <input type="email" name='email' value={user?.email || ''} className="input w-full " placeholder="User Email" readOnly />
-                                <input type="text" name='name' value={user?.displayName || ''} className="input w-full " placeholder="User Email" readOnly />
+                                    <input type="email" name='email' value={user?.email || ''} className="input w-full " placeholder="User Email" readOnly />
+                                    <input type="text" name='name' value={user?.displayName || ''} className="input w-full " placeholder="User Email" readOnly />
                                 </>
                         }
                     </fieldset>

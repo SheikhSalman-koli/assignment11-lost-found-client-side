@@ -24,7 +24,7 @@ const MyItem = () => {
             })
     }, [email])
 
-console.log(items);
+// console.log(items);
 
     useEffect(() => {
         document.title = "My Item";
