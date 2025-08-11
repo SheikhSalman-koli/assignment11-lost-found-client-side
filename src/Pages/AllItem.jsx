@@ -28,7 +28,7 @@ const AllItem = () => {
 
     useEffect(() => {
         setLoader(true)
-        axios(`http://localhost:3000/allitem?searchParams=${search}&sortParams=${sortOption}`)
+        axios(`https://lost-found-server-two.vercel.app/allitem?searchParams=${search}&sortParams=${sortOption}`)
             .then(res => {
                 setItems(res.data)
                 setLoader(false)
@@ -46,7 +46,7 @@ const AllItem = () => {
 
     // const fetchItems = async () => {
     //     try {
-    //         const res = await axios.get(`http://localhost:3000/allitem?searchParams=${search}&sortType=${sortType}&sortValue=${sortValue}`);
+    //         const res = await axios.get(`https://lost-found-server-two.vercel.app/allitem?searchParams=${search}&sortType=${sortType}&sortValue=${sortValue}`);
     //         setItems(res?.data);
     //     } catch (err) {
     //         console.error(err);

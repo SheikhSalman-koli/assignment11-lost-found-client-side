@@ -9,7 +9,7 @@ import '@splidejs/react-splide/css';
 
 const Slider = () => {
     return (
-        <div className='border-t-10 border-base-100'>
+        <div className='border-t-16 border-base-100'>
             <Splide
                 options={{
                     type: 'loop',
@@ -22,19 +22,19 @@ const Slider = () => {
                 <SplideSlide >
                     <div className='relative'>
                         <img className=' w-full h-[250px] lg:h-[450px] ' src={found1} alt="Image 1" />
-                    <h2 className='top-8 lg:top-20 left-8 text-5xl absolute text-amber-400'>found a men's leather wallet</h2>
+                    <h2 className='top-8 lg:top-20 left-8 text-5xl absolute text-[#28A745]'></h2>
                     </div>
                 </SplideSlide>
                   <SplideSlide >
                     <div className='relative'>
                         <img className=' w-full h-[250px] lg:h-[450px] ' src={lost2} alt="Image 1" />
-                    <h2 className='top-8 lg:top-20 left-8 text-5xl absolute text-white'>found a cat</h2>
+                    <h2 className='top-8 lg:top-20 left-8 text-5xl absolute text-[#28A745]'></h2>
                     </div>
                 </SplideSlide>
                  <SplideSlide >
                     <div className='relative'>
                         <img className=' w-full h-[250px] lg:h-[450px] object-cover' src={found2} alt="Image 1" />
-                    <h2 className='top-8 lg:top-20 left-8 text-5xl absolute text-amber-400'>found a girl on street</h2>
+                    <h2 className='top-8 lg:top-20 left-8 text-5xl absolute text-[#28A745]'></h2>
                     </div>
                 </SplideSlide>
                 <SplideSlide>

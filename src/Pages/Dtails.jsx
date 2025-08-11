@@ -55,7 +55,7 @@ const Dtails = () => {
             confirmButtonText: "Yes, recover it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.post(`http://localhost:3000/recovered/${data._id}`, allData)
+                axios.post(`https://lost-found-server-two.vercel.app/recovered/${data._id}`, allData)
                     .then(res => {
                         // console.log(res.data);
                         if (res.data.insertedId){
@@ -88,7 +88,7 @@ const Dtails = () => {
 
                 {/* Post Type & Category */}
                 <div className="flex gap-3 mb-4">
-                    <span className="px-4 py-1 rounded-full bg-blue-100 text-blue-700 font-semibold">
+                    <span className="px-4 py-1 rounded-full bg-blue-100 text-[#2C7BE5] font-semibold">
                         {data?.type}
                     </span>
                     <span className="px-4 py-1 rounded-full bg-green-100 text-green-700 font-semibold">

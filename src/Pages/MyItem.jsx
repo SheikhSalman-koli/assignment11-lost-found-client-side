@@ -15,7 +15,7 @@ const MyItem = () => {
 
     useEffect(() => {
         setLoader(true)
-        axios(`http://localhost:3000/myitem/${email}`)
+        axios(`https://lost-found-server-two.vercel.app/myitem/${email}`)
             .then(res => {
                 setItems(res.data)
                 setLoader(false)
