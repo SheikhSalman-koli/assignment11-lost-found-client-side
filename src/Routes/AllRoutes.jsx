@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import NotFound from "../Pages/NotFound";
 import Recovered from "../Pages/Recovered";
 import Spinner from "../Componants/Spinner";
+import Blogs from "../Pages/Blogs";
 
 export const routes = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ export const routes = createBrowserRouter([
                 path: 'signup',
                 Component: Signup
             },
+            {
+                path: 'blogs',
+                Component : Blogs
+            }
 
         ]
     },
