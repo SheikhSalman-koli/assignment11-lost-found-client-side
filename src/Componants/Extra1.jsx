@@ -1,13 +1,17 @@
 import React from 'react';
 import { motion } from "framer-motion";
 
+
 // whileHover = {{ scale: 1.1 }} 
 // whileTap = {{ scale: 0.8 }}
 // transition = {{ duration: 0.5 }}
 
 const Extra1 = () => {
+
+
+
   return (
-    <div className="w-full bg-base-100 p-8 max-w-11/12 mx-auto">
+    <div id='saifty-tips' className="w-full bg-base-100 p-8 max-w-11/12 mx-auto">
       <h2 className="text-3xl font-bold mb-6 text-center">Lost & Found Safety Tips</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-12">
         

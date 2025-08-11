@@ -124,7 +124,7 @@ const AddItem = () => {
                     </fieldset>
                 </div>
 
-                <input type="submit" className='btn w-full mt-5 text-white text-[18px] bg-[#2C7BE5] hover:rounded-4xl' value="Add Item" />
+                <input type="submit" className='btn w-full mt-5 text-white text-[18px] bg-[#2C7BE5] hover:rounded-4xl' value="Report Item" />
             </form>
         </div>
     );

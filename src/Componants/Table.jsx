@@ -121,7 +121,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
                             <div className='flex justify-between'>
                                 <h3 className="text-2xl">Update Item</h3>
                                 <label className='z-[999]'>
-                                    <button className='btn btn-warning' onClick={closeModal}><RiCloseLargeFill size={20} /></button>
+                                    <button className='btn btn-outline' onClick={closeModal}><RiCloseLargeFill size={20} /></button>
                                 </label>
                             </div>
 

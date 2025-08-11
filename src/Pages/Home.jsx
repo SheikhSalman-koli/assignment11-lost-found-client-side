@@ -6,12 +6,13 @@ import Extra2 from '../Componants/Extra2';
 import HowItWorks from '../Componants/HowItWorks';
 
 
+
 const Home = () => {
 
-     useEffect(() => {
-            document.title = "Home";
-        },[]);
-    
+    useEffect(() => {
+        document.title = "Home";
+    }, []);
+
     return (
         <div className='space-y-15 py-16'>
             <Slider></Slider>
