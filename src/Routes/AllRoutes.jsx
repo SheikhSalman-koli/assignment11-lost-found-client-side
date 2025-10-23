@@ -4,7 +4,6 @@ import Home from "../Pages/Home";
 import Signin from "../Pages/Signin";
 import Signup from "../Pages/Signup";
 import AddItem from "../Pages/AddItem";
-import AllItem from "../Pages/AllItem";
 import Dtails from "../Pages/Dtails";
 import axios from "axios";
 import MyItem from "../Pages/MyItem";
@@ -13,6 +12,8 @@ import NotFound from "../Pages/NotFound";
 import Recovered from "../Pages/Recovered";
 import Spinner from "../Componants/Spinner";
 import Blogs from "../Pages/Blogs";
+import AllRecoveredItem from "../Pages/AllRecoveredItems";
+import AllIUnrecoveredItem from "../Pages/AllIUnrecoveredItem";
 
 
 export const routes = createBrowserRouter([
@@ -31,12 +32,16 @@ export const routes = createBrowserRouter([
                 </PrivateRoute>
             },
             {
-                path: 'allitem',
-                Component: AllItem,
+                path: 'AllIUnrecoveredItem',
+                Component: AllIUnrecoveredItem,
+            },
+            {
+                path: 'allRecoveredItem',
+                Component: AllRecoveredItem
             },
             {
                 path: 'details/:id',
-                loader: ({ params }) => axios(`https://lost-found-server-two.vercel.app/details/${params.id}`),
+                loader: ({ params }) => axios(`${import.meta.env.VITE_BASE_URL}/details/${params?.id}`),
                 element: <PrivateRoute>
                     <Dtails></Dtails>
                 </PrivateRoute>,
@@ -44,7 +49,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'myitem/:email',
-                // loader: ({ params }) => axios(`https://lost-found-server-two.vercel.app/myitem/${params.email}`),
+                // loader: ({ params }) => axios(`${import.meta.env.VITE_BASE_URL}/myitem/${params.email}`),
                 element: <PrivateRoute>
                     <MyItem></MyItem>
                 </PrivateRoute>,
@@ -52,7 +57,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'recovered/:email',
-                // loader: ({ params }) => axios(`https://lost-found-server-two.vercel.app/recovered/${params.email}`),
+                // loader: ({ params }) => axios(`${import.meta.env.VITE_BASE_URL}/recovered/${params.email}`),
                 element: <PrivateRoute>
                     <Recovered></Recovered>
                 </PrivateRoute>,

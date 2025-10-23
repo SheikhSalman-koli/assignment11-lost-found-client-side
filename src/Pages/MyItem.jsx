@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData, useParams } from 'react-router';
+import { Link,  useParams } from 'react-router';
 import Table from '../Componants/Table';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -7,7 +7,6 @@ import Spinner from '../Componants/Spinner';
 
 const MyItem = () => {
 
-    // const myitems = useLoaderData()
     const { email } = useParams()
     // console.log(email);
     const [loader, setLoader] = useState(false)
@@ -15,7 +14,7 @@ const MyItem = () => {
 
     useEffect(() => {
         setLoader(true)
-        axios(`https://lost-found-server-two.vercel.app/myitem/${email}`)
+        axios(`${import.meta.env.VITE_BASE_URL}/myitem/${email}`)
             .then(res => {
                 setItems(res.data)
                 setLoader(false)

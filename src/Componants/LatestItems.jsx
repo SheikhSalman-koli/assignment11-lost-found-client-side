@@ -14,7 +14,7 @@ const LatestItems = () => {
     // console.log(latest);
     useEffect(() => {
         setLoader(true)
-        axios('https://lost-found-server-two.vercel.app/latest')
+        axios(`${import.meta.env.VITE_BASE_URL}/latest`)
             .then(res => {
                 setLatest(res.data)
                 setLoader(false)

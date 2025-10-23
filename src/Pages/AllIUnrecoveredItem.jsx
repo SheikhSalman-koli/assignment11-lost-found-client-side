@@ -5,30 +5,20 @@ import { Link } from 'react-router';
 import { toast } from 'react-toastify';
 import Spinner from '../Componants/Spinner';
 
-const AllItem = () => {
+const AllIUnrecoveredItem = () => {
 
     const [loader, setLoader] = useState(false)
     const [items, setItems] = useState()
     const [search, setSearch] = useState('')
     const [sortOption, setSortOption] = useState('')
 
-    // const [sortType, setSortType] = useState("");
-    // const [sortValue, setSortValue] = useState("");
-    // const [openMenu, setOpenMenu] = useState(false);
-    // const [openSubMenu, setOpenSubMenu] = useState(null);
-    // console.log(sortType);
-    // console.log(sortValue);
-    // const categoryOptions = ["Human", "Documents", "Gadgets"];
-    // const statusOptions = ["Lost", "Found", "Recovered"];
-
-    // console.log(search);
     useEffect(() => {
-        document.title = "All Item";
+        document.title = "All Unrecovered Item";
     }, []);
 
     useEffect(() => {
         setLoader(true)
-        axios(`https://lost-found-server-two.vercel.app/allitem?searchParams=${search}&sortParams=${sortOption}`)
+        axios(`${import.meta.env.VITE_BASE_URL}/AllIUnrecoveredItem?searchParams=${search}&sortParams=${sortOption}`)
             .then(res => {
                 setItems(res.data)
                 setLoader(false)
@@ -37,33 +27,10 @@ const AllItem = () => {
             })
     }, [search, sortOption])
 
-    // useEffect(() => {
-    //     setLoader(true)
-    //     fetchItems();
-    //     setLoader(false)
-    // }, [search, sortType, sortValue]);
-
-
-    // const fetchItems = async () => {
-    //     try {
-    //         const res = await axios.get(`https://lost-found-server-two.vercel.app/allitem?searchParams=${search}&sortType=${sortType}&sortValue=${sortValue}`);
-    //         setItems(res?.data);
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // };
-
-    // const handleSortClick = (type, value) => {
-    //     setSortType(type);
-    //     setSortValue(value);
-    //     setOpenMenu(false);
-    //     setOpenSubMenu(null);
-    // };
-
 
     return (
         <div className='my-10 max-w-11/12 mx-auto pt-16'>
-            <h2 className="text-6xl text-center text-[#2C7BE5] mb-4">All Item</h2>
+            <h2 className="text-6xl text-center text-[#2C7BE5] mb-4">All Unrecovered Item</h2>
 
             <div className='mb-10 flex flex-col lg:flex-row lg:justify-between gap-3'>
                 <label className="input">
@@ -132,4 +99,4 @@ const AllItem = () => {
     );
 };
 
-export default AllItem;
+export default AllIUnrecoveredItem;

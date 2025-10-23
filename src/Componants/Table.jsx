@@ -1,4 +1,4 @@
-import React, { forwardRef, use, useState } from 'react';
+import React, {  use, useState } from 'react';
 import { BsVectorPen } from 'react-icons/bs';
 import { RiCloseLargeFill, RiDeleteBin3Fill } from 'react-icons/ri';
 import { AuthContext } from '../Context/AuthContext';
@@ -23,24 +23,14 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
     const closeModal = () => {
         setOpenmodal(false)
     }
-    // datePicker
-    // const [selectedDate, setSelectedDate] = useState(new Date());
-    // const formated = selectedDate.toLocaleDateString('en-GB')
-    // const ExampleCustomInput = forwardRef(
-    //     ({ value, onClick, className }, ref) => (
-    //         <button type='button' className={className} onClick={onClick} ref={ref}>
-    //             {value}
-    //         </button>
-    //     ),
-    // );
-    // handle update
+ 
     const handleUpdate = (e) => {
         e.preventDefault()
         const form = e.target;
         const formData = new FormData(form)
         const updated = Object.fromEntries(formData.entries())
         // const updated = { ...data, date: formated }
-        axios.put(`https://lost-found-server-two.vercel.app/myitem/${item._id}`, updated)
+        axios.put(`${import.meta.env.VITE_BASE_URL}/myitem/${item._id}`, updated)
             .then(res => {
                 if (res.data.modifiedCount) {
                     Swal.fire({
@@ -70,7 +60,7 @@ const Table = ({ item, index, items, setItems, onUpdate}) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://lost-found-server-two.vercel.app/myitem/${item._id}`)
+                axios.delete(`import.meta.env.VITE_BASE_URL/myitem/${item._id}`)
                     .then(res => {
                         // console.log(res.data);
                         if (res.data.deletedCount)

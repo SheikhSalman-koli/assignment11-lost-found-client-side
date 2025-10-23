@@ -55,7 +55,7 @@ const Dtails = () => {
             confirmButtonText: "Yes, recover it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.post(`https://lost-found-server-two.vercel.app/recovered/${data._id}`, allData)
+                axios.post(`${import.meta.env.VITE_BASE_URL}/recovered/${data?._id}`, allData)
                     .then(res => {
                         // console.log(res.data);
                         if (res.data.insertedId){
@@ -117,7 +117,11 @@ const Dtails = () => {
                 </div>
                 <div className="card-actions justify-end mt-4">
 
-                    <button onClick={handleModal} className="btn bg-[#28A745] hover:rounded-4xl text-white">{data?.type === 'Lost' ? 'Found This!' : 'This is mine'}</button>
+                    <button 
+                    onClick={handleModal} 
+                    className="btn bg-[#28A745] hover:rounded-4xl text-white">
+                        {data?.type === 'Lost' ? 'Found This!' : 'This is mine'},
+                    </button>
 
                     {
                         openmodal &&

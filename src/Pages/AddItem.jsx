@@ -4,10 +4,12 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { uploadPhoto } from '../utils/uploadImage';
 
 const AddItem = () => {
 
     const { user, isLoading } = use(AuthContext)
+    const [loading, setLoading] = useState(false)
 
     const [selectedDate, setSelectedDate] = useState(new Date());
     const formated = selectedDate.toISOString().split('T')[0]
@@ -23,17 +25,28 @@ const AddItem = () => {
         document.title = "Add Item";
     }, []);
 
-    const handleAdd = (e) => {
+    const handleAdd = async (e) => {
+        setLoading(true)
+
         e.preventDefault()
         const form = e.target
         const formData = new FormData(form)
         const newItem = Object.fromEntries(formData.entries())
-        const data = { ...newItem, date: formated }
-        // console.log(data);
 
-        axios.post('https://lost-found-server-two.vercel.app/additem', data)
+        const file = form.thumbnail.files[0]
+        // console.log(file);
+
+        const image = await uploadPhoto(file)
+        newItem.thumbnail = image
+        // console.log(thumbnail);
+
+        const data = { ...newItem, date: formated }
+
+        axios.post(`${import.meta.env.VITE_BASE_URL}/additem`, data)
             .then(res => {
+                setLoading(false)
                 // console.log(res.data);
+                form.reset()
                 if (res?.data?.insertedId) {
                     toast.success('An Item Added Successfully!')
                 }
@@ -41,6 +54,7 @@ const AddItem = () => {
             .catch(error => {
                 toast.error(error.message)
             })
+
     }
 
 
@@ -49,6 +63,7 @@ const AddItem = () => {
             <div className='p-12 text-center space-y-4'>
                 <h1 className="text-3xl lg:text-6xl text-[#2C7BE5]">Report Lost Or Found Item</h1>
             </div>
+
             <form onSubmit={handleAdd} onKeyDown={(e) => e.key === 'Enter' && e.preventDefault()}>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                     {/* Post type */}
@@ -62,8 +77,14 @@ const AddItem = () => {
                     </fieldset>
                     {/* Thumbnail*/}
                     <fieldset className="fieldset border-1 border-gray-300 rounded-box p-4">
-                        <label className="label font-bold  text-[18px]">Thumbnail (Image URL)</label>
-                        <input type="text" name='thumbnail' className="input w-full " placeholder="Thumbnail (Image URL)" required />
+                        <label className="label font-bold  text-[18px]">Upload Image</label>
+                        <input
+                            type="file"
+                            name="thumbnail"
+                            className="input w-full "
+                            accept="image/*"
+                            placeholder="upload image"
+                            required />
                     </fieldset>
 
                     {/* title*/}
@@ -124,7 +145,17 @@ const AddItem = () => {
                     </fieldset>
                 </div>
 
-                <input type="submit" className='btn w-full mt-5 text-white text-[18px] bg-[#2C7BE5] hover:rounded-4xl' value="Report Item" />
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className={`btn w-full mt-5 text-white text-[18px] bg-[#2C7BE5] hover:rounded-4xl ${loading ? 'cursor-not-allowed' : ''}`}
+                >
+                    {loading ? (
+                        <span className="loading loading-spinner text-neutral"></span>
+                    ) : (
+                        "Report Item"
+                    )}
+                </button>
             </form>
         </div>
     );
