@@ -14,6 +14,7 @@ import Spinner from "../Componants/Spinner";
 import Blogs from "../Pages/Blogs";
 import AllRecoveredItem from "../Pages/AllRecoveredItems";
 import AllIUnrecoveredItem from "../Pages/AllIUnrecoveredItem";
+import Analytics from "../Pages/Analytics";
 
 
 export const routes = createBrowserRouter([
@@ -38,6 +39,10 @@ export const routes = createBrowserRouter([
             {
                 path: 'allRecoveredItem',
                 Component: AllRecoveredItem
+            },
+            {
+                path: "items/analytics",
+                Component: Analytics
             },
             {
                 path: 'details/:id',

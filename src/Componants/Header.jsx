@@ -45,6 +45,7 @@ const Header = () => {
                             {user && isUser}
                             <li> <NavLink to='/AllIUnrecoveredItem'>UnRecovered-Items</NavLink></li>
                             <li> <NavLink to='/allRecoveredItem'>Recovered-Items</NavLink></li>
+                            <li> <NavLink to='/items/analytics'>Analytics</NavLink></li>
                             <li> <NavLink to='/blogs'>Blogs</NavLink></li>
 
                         </ul>
@@ -83,6 +84,7 @@ const Header = () => {
                         }
                         <li> <NavLink to='/AllIUnrecoveredItem'>UnRecovered-Items</NavLink></li>
                         <li> <NavLink to='/allRecoveredItem'>Recovered-Items</NavLink></li>
+                         <li> <NavLink to='/items/analytics'>Analytics</NavLink></li>
                         <li> <NavLink to='/blogs'>Blogs</NavLink></li>
 
                     </ul>
